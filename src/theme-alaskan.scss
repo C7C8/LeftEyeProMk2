@@ -1,0 +1,32 @@
+@use "@angular/material" as mat;
+@import "fonts";
+
+@include mat.core();
+
+$typography-config: mat.define-typography-config(
+	$font-family: mat.define-typography-level(14px, 20px, 400, 'Playfair Display', 0.0179em),
+	$headline-1: mat.define-typography-level(112px, 112px, 400, 'Abril Fatface', -0.0134em),
+	$headline-2: mat.define-typography-level(56px, 56px, 400, 'Abril Fatface', -0.0089em),
+	$headline-3: mat.define-typography-level(45px, 48px, 400, 'Abril Fatface', 0.0000em),
+	$headline-4: mat.define-typography-level(34px, 40px, 400, 'Abril Fatface', 0.0074em),
+	$headline-5: mat.define-typography-level(24px, 32px, 400, 'Abril Fatface', 0.0000em), // H1
+	$headline-6: mat.define-typography-level(20px, 32px, 500, 'Quattrocento', 0.0075em),
+	$subtitle-2: mat.define-typography-level(16px, 28px, 400, 'Quattrocento', 0.0094em),
+	$subtitle-1: mat.define-typography-level(15px, 24px, 500, 'Quattrocentro', 0.0067em),
+	$body-2: mat.define-typography-level(14px, 24px, 500, 'Playfair Display', 0.0179em),
+	$body-1: mat.define-typography-level(14px, 20px, 400, 'Playfair Display', 0.0179em),
+	$button: mat.define-typography-level(14px, 14px, 500, 'Playfair Display', 0.0893em),
+	$caption: mat.define-typography-level(12px, 20px, 400, 'Playfair Display', 0.0333em),
+	$overline: mat.define-typography-level(inherit, 1.125, 400, 'Playfair Display', 1.5px)
+);
+
+$theme-alaskan: mat.define-light-theme((
+	color: (
+		primary: mat.define-palette(mat.$blue-grey-palette),
+		accent: mat.define-palette(mat.$light-blue-palette),
+		warn: mat.define-palette(mat.$amber-palette)
+	)
+));
+
+@include mat.all-component-themes($theme-alaskan);
+@include mat.all-component-typographies($typography-config);

@@ -3,6 +3,7 @@
 
 @include mat.core();
 
+// FONTS
 $typography-config: mat.define-typography-config(
 	$font-family: mat.define-typography-level(14px, 20px, 400, 'Playfair Display', 0.0179em),
 	$headline-1: mat.define-typography-level(112px, 112px, 400, 'Abril Fatface', -0.0134em),
@@ -20,13 +21,31 @@ $typography-config: mat.define-typography-config(
 	$overline: mat.define-typography-level(inherit, 1.125, 400, 'Playfair Display', 1.5px)
 );
 
-$theme-alaskan: mat.define-light-theme((
+// COLOR PALETTES
+$alaskan-primary: mat.define-palette(mat.$blue-grey-palette);
+$alaskan-accent: mat.define-palette(mat.$light-blue-palette);
+$alaskan-warn: mat.define-palette(mat.$amber-palette);
+
+$theme-alaskan-dark: mat.define-dark-theme((
 	color: (
-		primary: mat.define-palette(mat.$blue-grey-palette),
-		accent: mat.define-palette(mat.$light-blue-palette),
-		warn: mat.define-palette(mat.$amber-palette)
+		primary: $alaskan-primary,
+		accent: $alaskan-accent,
+		warn: $alaskan-warn
+	),
+));
+
+$theme-alaskan-light: mat.define-light-theme((
+	color: (
+		primary: $alaskan-primary,
+		accent: $alaskan-accent,
+		warn: $alaskan-warn
 	)
 ));
 
-@include mat.all-component-themes($theme-alaskan);
 @include mat.all-component-typographies($typography-config);
+@include mat.all-component-themes($theme-alaskan-light);
+
+@media (prefers-color-scheme: light) {
+	@include mat.all-component-themes($theme-alaskan-dark);
+}
+

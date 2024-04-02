@@ -1,0 +1,62 @@
+.carousel-container {
+	height: 95%; // TODO Investigate if this height 95% is necessary for carousel rendering
+	width: 100%;
+
+	ngu-carousel {
+		height: 89%; // TODO Why is this needed?
+	}
+
+	.item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding-bottom: 0.5em;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	.carousel-point {
+		padding: 0;
+		list-style-type: none;
+		text-align: center;
+		margin: 0;
+
+		li {
+			display: inline-block;
+			border-radius: 50%;
+			padding: 0.20em;
+			background: #6B6B6BCC;
+			margin: 0.5em;
+			transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+			transition: 0.4s;
+			cursor: pointer;
+		}
+
+		li.active {
+			background: #FBFBFBCC;
+		}
+	}
+
+	.carousel-buttons {
+		width: 95%;
+		margin: auto;
+		position: absolute;
+		display: flex;
+		justify-content: space-between;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		mat-icon {
+			font-size: 36px;
+			height: 36px;
+			width: 36px;
+			line-height: 36px;
+			opacity: 0.5;
+		}
+	}
+}

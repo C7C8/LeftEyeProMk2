@@ -1,0 +1,85 @@
+mat-toolbar {
+	height: 4em;
+	margin-bottom: 1.5em;
+
+	.header-title-container:hover {
+		cursor: pointer;
+	}
+
+	.header-title-container {
+		display: flex;
+		flex-direction: row;
+
+		img {
+			max-height: 3em;
+			max-width: 3em;
+		}
+
+		.title-container {
+			display: flex;
+			margin-left: 0.5em;
+			margin-right: 1em;
+			text-align: center;
+			flex-direction: column;
+			font-family: "Abril Fatface", sans-serif;
+			font-variant: small-caps;
+
+			.header-title-main {
+				font-size: 1.5em;
+			}
+
+			.header-title-sub {
+				font-size: 0.85em;
+			}
+		}
+	}
+
+	button {
+		font-family: "Quattrocento", serif;
+		font-size: 1em;
+	}
+
+	button + button {
+
+	}
+}
+
+.content-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.content {
+		flex: 1 0 auto;
+		padding: 0 2%;
+	}
+
+	footer {
+		flex-shrink: 0;
+		text-align: center;
+		margin-top: 5em;
+		margin-bottom: 2.5em;
+		font-size: 0.85em;
+		opacity: 0.6;
+
+		a {
+			color: unset;
+			text-decoration: none;
+			margin: 0 0.5em;
+		}
+
+		mat-icon {
+			display: inline;
+			font-size: 1em;
+			margin: 0.5em;
+		}
+
+		img {
+			filter: grayscale(100%);
+			opacity: 0.4;
+			max-width: 4em;
+			max-height: 4em;
+			margin: auto 1em;
+		}
+	}
+}

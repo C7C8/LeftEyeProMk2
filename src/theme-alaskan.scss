@@ -26,14 +26,6 @@ $alaskan-primary: mat.define-palette(mat.$blue-grey-palette);
 $alaskan-accent: mat.define-palette(mat.$light-blue-palette);
 $alaskan-warn: mat.define-palette(mat.$amber-palette);
 
-$theme-alaskan-dark: mat.define-dark-theme((
-	color: (
-		primary: $alaskan-primary,
-		accent: $alaskan-accent,
-		warn: $alaskan-warn
-	),
-));
-
 $theme-alaskan-light: mat.define-light-theme((
 	color: (
 		primary: $alaskan-primary,
@@ -41,11 +33,17 @@ $theme-alaskan-light: mat.define-light-theme((
 		warn: $alaskan-warn
 	)
 ));
-
 @include mat.all-component-typographies($typography-config);
 @include mat.all-component-themes($theme-alaskan-light);
 
 @media (prefers-color-scheme: light) {
+	$theme-alaskan-dark: mat.define-dark-theme((
+		color: (
+			primary: $alaskan-primary,
+			accent: $alaskan-accent,
+			warn: $alaskan-warn
+		),
+	));
 	@include mat.all-component-themes($theme-alaskan-dark);
 }
 

@@ -7,3 +7,16 @@ html, body {
 body {
 	margin: 0;
 }
+
+/*****************
+ * COMMON STYLES *
+ *****************/
+
+// Flex spacer
+.spacer {
+	flex-grow: 1;
+}
+
+.middot {
+	font-size: 2em;
+}

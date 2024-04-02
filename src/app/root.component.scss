@@ -1,6 +1,5 @@
 mat-toolbar {
 	height: 4em;
-	margin-bottom: 1.5em;
 
 	.header-title-container:hover {
 		cursor: pointer;
@@ -22,14 +21,11 @@ mat-toolbar {
 			text-align: center;
 			flex-direction: column;
 			font-family: "Abril Fatface", sans-serif;
-			font-variant: small-caps;
 
 			.header-title-main {
+				font-variant: small-caps;
 				font-size: 1.5em;
-			}
-
-			.header-title-sub {
-				font-size: 0.85em;
+				text-decoration: underline;
 			}
 		}
 	}
@@ -51,7 +47,7 @@ mat-toolbar {
 
 	.content {
 		flex: 1 0 auto;
-		padding: 0 2%;
+		padding: 0; //2%;
 	}
 
 	footer {

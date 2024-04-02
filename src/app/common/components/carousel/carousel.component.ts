@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
 import {
 	NguCarousel,
 	NguCarouselConfig,
@@ -29,16 +29,13 @@ export interface CarouselImage {
 		NguCarouselPrevDirective,
 		NguCarouselNextDirective,
 		NguCarouselPointDirective,
-		NgForOf,
-		MatIconButton,
-		MatIcon
+		NgForOf
 	],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent implements AfterViewInit {
 	@Input() images: CarouselImage[] = [];
-	@Input() showButtons: boolean = true;
 	@Input() showPoints: boolean = true;
 	@Input() shuffle: boolean = false;
 	@Input() carouselConfig: NguCarouselConfig = {

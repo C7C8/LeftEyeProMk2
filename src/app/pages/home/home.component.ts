@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
+import { CarouselComponent, CarouselImage } from "../../common/components/carousel/carousel.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+	imports: [
+		CarouselComponent
+	],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
+	protected carouselImages: CarouselImage[] = [
+		{ image: "/assets/images/hero/whale_tails_short.jpg", alt: "Whale tails after a breach" },
+		{ image: "/assets/images/hero/polar_bear_face_short.jpg", alt: "A polar bear looks into the camera" },
+		{ image: "/assets/images/hero/polar_bear_w_cub_short.jpg", alt: "A mother polar bear with her cub" },
+		{ image: "/assets/images/hero/polar_bear_w_cub_2_short.jpg", alt: "A mother polar bear looking after her cub" },
+		// { image: "/assets/images/hero/polar_bear_muddy_cave_short.jpg", alt: "A polar bear in a muddy cave" }
+	]
 }

@@ -1,21 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from "@angular/material/toolbar";
 import { NgOptimizedImage } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
+import { RuntimeConfigFile, RuntimeConfigService } from "./common/services/runtime-config.service";
+import { MatDialog } from "@angular/material/dialog";
+import { CreditsPopupComponent } from "./common/components/author-popup/credits-popup.component";
+import { KonamiDirective } from "./common/directives/konami.directive";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton],
+	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective],
   templateUrl: './root.component.html',
   styleUrl: './root.component.scss'
 })
-export class RootComponent {
+export class RootComponent implements OnInit {
 
-	constructor(protected router: Router) {
+	private publicationImages: string[] = [];
 
+	constructor(
+		protected router: Router,
+		protected runtimeConfig: RuntimeConfigService,
+		protected dialog: MatDialog) {
+	}
+
+	async ngOnInit(): Promise<void> {
+		this.publicationImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS);
+	}
+
+	protected openCredits() {
+		this.dialog.open(CreditsPopupComponent, {
+			width: "30vw"
+		});
 	}
 
 	year(): number {

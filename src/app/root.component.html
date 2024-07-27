@@ -29,13 +29,21 @@
 	</div>
 
 	<footer>
-		<img ngSrc="/assets/favicon.ico" width="64" height="64" alt="lep logo">
-		<div>
-			<!-- TODO: Verify phone number -->
-			<a href="mailto:steven@lefteyepro.com"><mat-icon fontIcon="mail"/>steven&commat;lefteyepro.com</a>
-			<a href="tel:13607794350"><mat-icon fontIcon="call"/>+1 (360) 779-4350</a>
+		<!-- Publications bar, mimicking original website -->
+		<div class="publications">
+			<img *ngFor="let image of publicationImages" [src]="image" alt="publication image" fill/>
 		</div>
-		<!-- TODO: Verify copyright years -->
-		<div>&copy; 2005-{{year()}} Steven Kazlowski / Left Eye Productions. All Rights Reserved</div>
+
+		<!-- Standard logo + copyright + contact footer -->
+		<div class="footer-content">
+			<img ngSrc="/assets/favicon.ico" width="64" height="64" alt="lep logo">
+			<div>
+				<!-- TODO: Verify phone number -->
+				<a href="mailto:steven@lefteyepro.com"><mat-icon fontIcon="mail"/>steven&commat;lefteyepro.com</a>
+				<a href="tel:13607794350"><mat-icon fontIcon="call"/>+1 (360) 779-4350</a>
+			</div>
+			<!-- TODO: Verify copyright years -->
+			<div>&copy; 2005-{{year()}} Steven Kazlowski / Left Eye Productions. All Rights Reserved</div>
+		</div>
 	</footer>
 </div>

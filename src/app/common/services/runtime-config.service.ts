@@ -34,7 +34,7 @@ export class RuntimeConfigService {
 		}
 
 		// Nope, we don't have it.
-		console.group("Fetch runtime configuration");
+		console.group(`Fetch runtime configuration ${file}`);
 		console.debug(`Requesting file ${file}`)
 		try {
 			const result = await firstValueFrom(this.http.get(file, {responseType: "text"}))

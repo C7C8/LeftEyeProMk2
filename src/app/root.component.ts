@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from "@angular/material/toolbar";
-import { NgOptimizedImage } from "@angular/common";
+import { NgForOf, NgOptimizedImage } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
 import { RuntimeConfigFile, RuntimeConfigService } from "./common/services/runtime-config.service";
@@ -12,13 +12,13 @@ import { KonamiDirective } from "./common/directives/konami.directive";
 @Component({
   selector: 'app-root',
   standalone: true,
-	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective],
+	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective, NgForOf],
   templateUrl: './root.component.html',
   styleUrl: './root.component.scss'
 })
 export class RootComponent implements OnInit {
 
-	private publicationImages: string[] = [];
+	protected publicationImages: string[] = [];
 
 	constructor(
 		protected router: Router,

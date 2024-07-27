@@ -31,7 +31,7 @@
 	<footer>
 		<!-- Publications bar, mimicking original website -->
 		<div class="publications">
-			<img *ngFor="let image of publicationImages" [src]="image" alt="publication image" fill/>
+			<img *ngFor="let image of publicationImages" [src]="image" [alt]="image.split('/').pop()"/>
 		</div>
 
 		<!-- Standard logo + copyright + contact footer -->

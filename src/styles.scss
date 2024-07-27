@@ -17,6 +17,12 @@ body {
 	flex-grow: 1;
 }
 
+// Middle dot used for separators.
 .middot {
 	font-size: 2em;
+}
+
+// Standard content container for most pages.
+.standard-content-container {
+	padding: 2.5vh 20vh;
 }

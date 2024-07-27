@@ -60,7 +60,7 @@ mat-toolbar {
 		.publications {
 			padding: 1em 5vw;
 			margin: 0 20vw 5vh;
-			height: 10vh;
+			height: 13em;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-evenly;
@@ -73,7 +73,6 @@ mat-toolbar {
 			);
 
 			img {
-				opacity: 1.0 !important;
 				height: 100%;
 			}
 		}

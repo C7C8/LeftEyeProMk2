@@ -7,8 +7,6 @@ h1 {
 	grid-template-columns: repeat(3, 1fr);
 	column-gap: 1em;
 	row-gap: 1em;
-	height: 70vh;
-	overflow-y: scroll;
 }
 
 app-adventure-card {

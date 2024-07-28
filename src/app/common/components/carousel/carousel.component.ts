@@ -8,8 +8,6 @@ import {
 } from "@ngu/carousel";
 import { NgForOf, NgIf } from "@angular/common";
 import _ from "lodash";
-import { MatIconButton } from "@angular/material/button";
-import { MatIcon } from "@angular/material/icon";
 
 export interface CarouselImage {
 	image: string;

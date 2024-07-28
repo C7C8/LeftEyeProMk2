@@ -1,0 +1,14 @@
+<mat-card appearance="outlined">
+	<mat-card-header>
+		<mat-card-title>{{adventure.title}}</mat-card-title>
+		<mat-card-subtitle *ngIf="adventure.subtitle">
+			{{adventure.subtitle}}<span *ngIf="adventure.date"> - {{adventure.date}}</span>
+		</mat-card-subtitle>
+	</mat-card-header>
+
+	<img *ngIf="adventure.images.length > 0" [src]="adventure.images[0]" [alt]="adventure.images[0]" />
+
+	<mat-card-content>
+		<markdown [data]="adventure.content"/>
+	</mat-card-content>
+</mat-card>

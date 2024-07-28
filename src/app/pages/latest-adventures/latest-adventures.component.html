@@ -1,1 +1,6 @@
-<p>latest-adventures works!</p>
+<div class="standard-content-container">
+	<h1>Latest Adventures</h1>
+	<div id="grid">
+		<app-adventure-card *ngFor="let adventure of adventures" [adventure]="adventure"></app-adventure-card>
+	</div>
+</div>

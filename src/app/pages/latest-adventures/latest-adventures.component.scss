@@ -1,0 +1,16 @@
+h1 {
+	font-size: 3em;
+}
+
+#grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 1em;
+	row-gap: 1em;
+	height: 70vh;
+	overflow-y: scroll;
+}
+
+app-adventure-card {
+	height: 65vh;
+}

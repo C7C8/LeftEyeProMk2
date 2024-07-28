@@ -7,7 +7,8 @@ import { Location } from "@angular/common";
 export enum RuntimeConfigFile {
 	HERO_IMAGES = "/assets/configs/hero_images.yaml",
 	PUBLICATIONS = "/assets/configs/publications.yaml",
-	CATEGORIES = "/assets/configs/categories.yaml"
+	CATEGORIES = "/assets/configs/categories.yaml",
+	ADVENTURES = "/assets/configs/adventures.yaml"
 }
 
 /**

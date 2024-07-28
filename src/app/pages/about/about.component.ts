@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatCard, MatCardContent, MatCardHeader } from "@angular/material/card";
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from "@angular/material/card";
 
 @Component({
   selector: 'app-about',
@@ -7,6 +7,7 @@ import { MatCard, MatCardContent, MatCardHeader } from "@angular/material/card";
 	imports: [
 		MatCard,
 		MatCardHeader,
+		MatCardTitle,
 		MatCardContent
 	],
   templateUrl: './about.component.html',

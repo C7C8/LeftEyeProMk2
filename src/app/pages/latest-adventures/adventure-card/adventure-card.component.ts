@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {
 	MatCard,
 	MatCardContent,
@@ -9,6 +9,10 @@ import {
 } from "@angular/material/card";
 import { NgIf, NgOptimizedImage } from "@angular/common";
 import { MarkdownComponent } from "ngx-markdown";
+import { MatIconButton } from "@angular/material/button";
+import { MatIcon } from "@angular/material/icon";
+import { MatDialog, MatDialogClose, MatDialogRef } from "@angular/material/dialog";
+import { MatTooltip } from "@angular/material/tooltip";
 
 /**
  * Adventure card data
@@ -52,7 +56,11 @@ export interface AdventureCardData {
 		NgOptimizedImage,
 		MatCardImage,
 		MatCardContent,
-		MarkdownComponent
+		MarkdownComponent,
+		MatIconButton,
+		MatIcon,
+		MatDialogClose,
+		MatTooltip
 	],
   templateUrl: './adventure-card.component.html',
   styleUrl: './adventure-card.component.scss'
@@ -61,4 +69,17 @@ export class AdventureCardComponent {
 
 	@Input({required: true})
 	public adventure!: AdventureCardData;
+	protected dialogRef?: MatDialogRef<AdventureCardComponent> | null = null;
+
+	constructor(private dialog: MatDialog) {
+		this.dialogRef = inject(MatDialogRef<AdventureCardComponent>, {optional: true})
+	}
+
+	protected expandToDialog() {
+		const ref = this.dialog.open(AdventureCardComponent, {
+			width: "40vw",
+			height: "80vh"
+		});
+		ref.componentInstance.adventure = this.adventure;
+	}
 }

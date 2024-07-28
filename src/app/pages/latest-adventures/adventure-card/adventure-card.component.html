@@ -1,9 +1,34 @@
 <mat-card appearance="outlined">
 	<mat-card-header>
-		<mat-card-title>{{adventure.title}}</mat-card-title>
-		<mat-card-subtitle *ngIf="adventure.subtitle">
-			{{adventure.subtitle}}<span *ngIf="adventure.date"> - {{adventure.date}}</span>
-		</mat-card-subtitle>
+		<div id="header">
+			<!-- Header w/title on left and "expand" button on right -->
+			<div id="title">
+				<mat-card-title>{{adventure.title}}</mat-card-title>
+				<mat-card-subtitle *ngIf="adventure.subtitle">
+					{{adventure.subtitle}}<span *ngIf="adventure.date"> - {{adventure.date}}</span>
+				</mat-card-subtitle>
+			</div>
+
+			<span class="spacer"></span>
+
+			<!-- If not a dialog, show an expand button. -->
+			<button mat-icon-button
+							matTooltip="Open in expanded view"
+							[matTooltipShowDelay]="250"
+							*ngIf="dialogRef === null"
+							(click)="expandToDialog()">
+				<mat-icon fontIcon="open_in_full"/>
+			</button>
+
+			<!-- If we *are* a dialog, show a close button. -->
+			<button mat-icon-button
+							matDialogClose
+							matTooltip="Close expanded view"
+							[matTooltipShowDelay]="250"
+							*ngIf="dialogRef">
+				<mat-icon fontIcon="close"/>
+			</button>
+		</div>
 	</mat-card-header>
 
 	<img *ngIf="adventure.images.length > 0" [src]="adventure.images[0]" [alt]="adventure.images[0]" />

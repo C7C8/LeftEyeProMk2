@@ -98,5 +98,6 @@ export class AdventureCardComponent implements OnChanges {
 			height: "80vh"
 		});
 		ref.componentInstance.adventure = this.adventure;
+		ref.componentInstance.carouselImages = this.carouselImages;
 	}
 }

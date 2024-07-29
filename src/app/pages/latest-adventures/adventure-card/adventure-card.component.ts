@@ -13,8 +13,12 @@ import { MatIconButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { MatDialog, MatDialogClose, MatDialogRef } from "@angular/material/dialog";
 import { MatTooltip } from "@angular/material/tooltip";
-import { CarouselComponent, CarouselImage } from "../../../common/components/carousel/carousel.component";
-import { NguCarousel } from "@ngu/carousel";
+import {
+	CarouselComponent,
+	CarouselImage,
+	DEFAULT_CAROUSEL_CONFIG
+} from "../../../common/components/carousel/carousel.component";
+import { NguCarousel, NguCarouselConfig } from "@ngu/carousel";
 
 /**
  * Adventure card data
@@ -73,8 +77,22 @@ export class AdventureCardComponent implements OnChanges {
 
 	@Input({required: true})
 	public adventure!: AdventureCardData;
-	protected carouselImages: CarouselImage[] = [];
 	protected dialogRef?: MatDialogRef<AdventureCardComponent> | null = null;
+
+	// Carousel config.
+	// https://www.youtube.com/watch?v=bgs9OhjAE2g
+	protected carouselImages: CarouselImage[] = [];
+	private static readonly INTERVAL_BASE_MS= 10000;
+	private static readonly INTERVAL_JITTER_MS = 2500;
+	protected readonly carouselConfig: NguCarouselConfig = {
+		...DEFAULT_CAROUSEL_CONFIG,
+		interval: {
+			// Give some random jitter to timings, base +/- (random * jitter).
+			// This stops carousel images from creepily all changing at the same time.
+			timing: AdventureCardComponent.INTERVAL_BASE_MS + ((Math.random() * AdventureCardComponent.INTERVAL_JITTER_MS * 2) - AdventureCardComponent.INTERVAL_JITTER_MS),
+			initialDelay: AdventureCardComponent.INTERVAL_BASE_MS + ((Math.random() * AdventureCardComponent.INTERVAL_JITTER_MS * 2) - AdventureCardComponent.INTERVAL_JITTER_MS),
+		}
+	}
 
 	constructor(private dialog: MatDialog) {
 		this.dialogRef = inject(MatDialogRef<AdventureCardComponent>, {optional: true})

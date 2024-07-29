@@ -15,6 +15,21 @@ export interface CarouselImage {
 	caption?: string;
 }
 
+export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
+	grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+	slide: 2,
+	speed: 600,
+	animation: 'lazy',
+	interval: { initialDelay: 10000, timing: 10000 },
+	loop: true,
+	point: {
+		visible: true
+	},
+	load: 2,
+	touch: false,
+	easing: 'ease',
+};
+
 @Component({
   selector: 'app-carousel',
   standalone: true,
@@ -36,20 +51,7 @@ export class CarouselComponent implements AfterViewInit {
 	@Input() images: CarouselImage[] = [];
 	@Input() showPoints: boolean = true;
 	@Input() shuffle: boolean = false;
-	@Input() carouselConfig: NguCarouselConfig = {
-		grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-		slide: 2,
-		speed: 600,
-		animation: 'lazy',
-		interval: { initialDelay: 10000, timing: 10000 },
-		loop: true,
-		point: {
-			visible: true
-		},
-		load: 2,
-		touch: false,
-		easing: 'ease',
-	};
+	@Input() carouselConfig: NguCarouselConfig = DEFAULT_CAROUSEL_CONFIG;
 
 	constructor(private cdr: ChangeDetectorRef) {
 		if (this.shuffle) {

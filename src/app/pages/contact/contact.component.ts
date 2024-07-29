@@ -107,6 +107,23 @@ export class ContactComponent {
 		return date.getTime() - Date.now() > (1000 * 60 * 60 * 24);
 	}
 
+	protected onChangeRequests() {
+		// Changing the requests count number does not change the amount of request *forms* in the FormArray. This function
+		// computes the difference between what we have and what we need, and adjusts to compensate.
+
+		const newRequests: number = this.customContactForm.value.submitter?.requestsCount || 1;
+
+		// Too many forms
+		while (newRequests < this.customContactForm.controls.requests.length) {
+			this.customContactForm.controls.requests.removeAt(this.customContactForm.controls.requests.length - 1)
+		}
+
+		// Not enough forms
+		while (newRequests > this.customContactForm.controls.requests.length) {
+			this.customContactForm.controls.requests.push(this.makeImageRequest())
+		}
+	}
+
 	protected debugLog(): void {
 		console.log("Form value", this.customContactForm.value)
 	}

@@ -105,7 +105,7 @@
 						<span>
 							I have
 							<mat-form-field appearance="outline">
-								<input type="number" matInput formControlName="requestsCount" min="1">
+								<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()">
 							</mat-form-field>
 							image request@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
 						</span>
@@ -172,7 +172,7 @@
 														matStepperNext
 														type="button"
 														color="primary"
-														[disabled]="!customContactForm.controls.submitter.valid">
+														[disabled]="!requestControl.valid">
 											Next
 										</button>
 									</div>

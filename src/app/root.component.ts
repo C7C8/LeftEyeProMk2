@@ -8,6 +8,7 @@ import { RuntimeConfigFile, RuntimeConfigService } from "./common/services/runti
 import { MatDialog } from "@angular/material/dialog";
 import { CreditsPopupComponent } from "./common/components/author-popup/credits-popup.component";
 import { KonamiDirective } from "./common/directives/konami.directive";
+import { ContactComponent } from "./pages/contact/contact.component";
 
 @Component({
   selector: 'app-root',
@@ -23,8 +24,7 @@ export class RootComponent implements OnInit {
 	constructor(
 		protected router: Router,
 		protected runtimeConfig: RuntimeConfigService,
-		protected dialog: MatDialog) {
-	}
+		protected dialog: MatDialog) {}
 
 	async ngOnInit(): Promise<void> {
 		this.publicationImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS);
@@ -34,6 +34,12 @@ export class RootComponent implements OnInit {
 		this.dialog.open(CreditsPopupComponent, {
 			width: "30vw"
 		});
+	}
+
+	protected openContactForm() {
+		this.dialog.open(ContactComponent, {
+			width: "60vw"
+		})
 	}
 
 	year(): number {

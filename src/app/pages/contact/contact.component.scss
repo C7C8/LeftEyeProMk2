@@ -1,0 +1,32 @@
+h1 {
+	font-family: "Abril Fatface", sans-serif !important;
+	font-size: 2em !important;
+}
+
+mat-panel-description {
+	justify-content: space-between;
+}
+
+#contact-info-card {
+	width: 40%;
+	margin: 1em auto;
+
+	mat-card-content {
+		font-style: italic;
+		opacity: 0.75;
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+
+		mat-divider {
+			grid-column-start: 1;
+			grid-column-end: span 2;
+		}
+
+		mat-icon {
+			font-size: 1.5em;
+
+			// Lower icons a bit to be in-line with text
+			margin-bottom: -0.25em;
+		}
+	}
+}

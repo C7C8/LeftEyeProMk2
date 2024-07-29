@@ -9,7 +9,7 @@
 <mat-accordion>
 
 	<!-- Base "here's our info, do it yourself" form -->
-	<mat-expansion-panel hideToggle expanded>
+	<mat-expansion-panel hideToggle>
 
 		<mat-expansion-panel-header>
 			<mat-panel-title>Contact Information</mat-panel-title>
@@ -30,7 +30,7 @@
 
 				<mat-divider/>
 
-				<span><mat-icon>local_post_office</mat-icon> Send us a letter</span>
+				<span><mat-icon>home</mat-icon> Send us a letter</span>
 				<div>
 					<div>Left Eye Productions</div>
 					<div>8202 NE State Hwy 104</div>
@@ -43,10 +43,82 @@
 	</mat-expansion-panel>
 
 	<!-- Custom contact form -->
-	<mat-expansion-panel hideToggle>
+	<mat-expansion-panel hideToggle expanded>
 		<mat-expansion-panel-header>
 			<mat-panel-title>Custom Request</mat-panel-title>
 			<mat-panel-description>Looking for something specific? <mat-icon>build</mat-icon></mat-panel-description>
 		</mat-expansion-panel-header>
+
+		<p>
+			Know what you want but can't find it? Would you like us to do the research for you free of charge? We will search
+			a particular image, subject matter, or other special requirement and submit back electronically for your
+			consideration. We will search your request and get back to you within 24 hours, just fill out the form below and
+			send the generated message.
+		</p>
+
+		<mat-stepper orientation="vertical" linear>
+
+			<!-- Step 1 -- Submitter contact info -->
+			<mat-step [stepControl]="customContactForm.controls.submitter">
+				<ng-template matStepLabel>Your contact information</ng-template>
+				<form [formGroup]="customContactForm.controls.submitter">
+					<div id="submitterInfoForm">
+						<mat-form-field appearance="outline" floatLabel="always">
+							<mat-label>Name</mat-label>
+							<input matInput formControlName="name">
+							<mat-icon matTextPrefix>person</mat-icon>
+							@if (customContactForm.controls.submitter.controls.name.invalid) {
+								<mat-error>Name is required</mat-error>
+							}
+						</mat-form-field>
+
+						<mat-form-field appearance="outline" floatLabel="always">
+							<mat-label>Company</mat-label>
+							<mat-icon matTextPrefix>apartment</mat-icon>
+							<input matInput formControlName="company">
+						</mat-form-field>
+
+						<mat-form-field appearance="outline" floatLabel="always">
+							<mat-label>Phone Number</mat-label>
+							<input matInput placeholder="+# (###) ###-####" formControlName="phone">
+							<mat-icon matTextPrefix>phone</mat-icon>
+							@if (customContactForm.controls.submitter.controls.phone.invalid) {
+								<mat-error>Invalid number: +# (###) ###-####</mat-error>
+							}
+						</mat-form-field>
+
+						<mat-form-field appearance="outline" floatLabel="always">
+							<mat-label>Email</mat-label>
+							<input matInput formControlName="email">
+							<mat-icon matTextPrefix>mail</mat-icon>
+							@if (customContactForm.controls.submitter.controls.email.invalid) {
+								<mat-error>Invalid email</mat-error>
+							}
+						</mat-form-field>
+
+					</div>
+
+					<div id="submitterInfoFooter">
+						<span>
+							I have
+							<mat-form-field appearance="outline">
+								<input type="number" matInput formControlName="requestsCount" min="1">
+							</mat-form-field>
+							image request@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
+						</span>
+
+						<button mat-raised-button
+										matStepperNext
+										color="primary"
+										[disabled]="!customContactForm.controls.submitter.valid">
+							Next
+						</button>
+					</div>
+
+				</form>
+
+			</mat-step>
+
+		</mat-stepper>
 	</mat-expansion-panel>
 </mat-accordion>

@@ -30,3 +30,30 @@ mat-panel-description {
 		}
 	}
 }
+
+#submitterInfoForm {
+	margin-top: 0.5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	mat-form-field {
+		width: 20%;
+
+		mat-icon {
+			opacity: 0.6;
+			font-size: 1.5em;
+			margin-bottom: -0.5em;
+		}
+	}
+}
+
+#submitterInfoFooter {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	mat-form-field {
+		width: 5em;
+	}
+}

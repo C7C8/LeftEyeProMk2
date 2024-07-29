@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogTitle } from "@angular/material/dialog";
 import {
 	MatAccordion,
-	MatExpansionPanel,
+	MatExpansionPanel, MatExpansionPanelContent,
 	MatExpansionPanelDescription,
 	MatExpansionPanelHeader,
 	MatExpansionPanelTitle
@@ -52,7 +52,8 @@ interface ContactFormImageRequest {
 		MatError,
 		MatPrefix,
 		MatStepperNext,
-		MatTooltip
+		MatTooltip,
+		MatExpansionPanelContent
 	],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'

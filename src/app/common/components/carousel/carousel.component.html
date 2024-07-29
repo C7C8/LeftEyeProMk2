@@ -2,13 +2,19 @@
 	<ngu-carousel #carousel [inputs]="carouselConfig" [dataSource]="images">
 		<ngu-item NguCarouselItem *nguCarouselDef="let item;">
 			<img [src]="item.image" [alt]="item.alt"/>
-			<div class="caption" *ngIf="item.caption"><em>{{item.caption}}</em></div>
+			@if (item.caption) {
+				<div class="caption"><em>{{item.caption}}</em></div>
+			}
 		</ngu-item>
 
 	</ngu-carousel>
 
 	<!-- Carousel points -- indicates which image you're on. -->
-	<ul *ngIf="showPoints" class="carousel-point" NguCarouselPoint>
-		<li *ngFor="let j of carousel.pointNumbers" [class.active]="j==carousel.activePoint" (click)="carousel.moveTo(j)"></li>
-	</ul>
+	@if (showPoints) {
+		<ul class="carousel-point" NguCarouselPoint>
+			@for (j of carousel.pointNumbers; track j) {
+				<li [class.active]="j==carousel.activePoint" (click)="carousel.moveTo(j)"></li>
+			}
+		</ul>
+	}
 </div>

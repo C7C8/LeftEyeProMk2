@@ -6,7 +6,9 @@
 
 		<mat-card-content>
 			<div id="grid">
-				<app-adventure-card *ngFor="let adventure of page" [adventure]="adventure"></app-adventure-card>
+				@for (adventure of page; track adventure) {
+					<app-adventure-card [adventure]="adventure"></app-adventure-card>
+				}
 			</div>
 		</mat-card-content>
 

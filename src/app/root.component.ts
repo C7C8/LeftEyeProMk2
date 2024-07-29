@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from "@angular/material/toolbar";
-import { NgForOf, NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
 import { RuntimeConfigFile, RuntimeConfigService } from "./common/services/runtime-config.service";
@@ -13,7 +13,7 @@ import { ContactComponent } from "./pages/contact/contact.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective, NgForOf],
+	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective],
   templateUrl: './root.component.html',
   styleUrl: './root.component.scss'
 })

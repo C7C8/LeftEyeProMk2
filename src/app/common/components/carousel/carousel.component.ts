@@ -6,7 +6,7 @@ import {
 	NguCarouselItemDirective, NguCarouselNextDirective, NguCarouselPointDirective, NguCarouselPrevDirective,
 	NguItemComponent
 } from "@ngu/carousel";
-import { NgForOf, NgIf } from "@angular/common";
+
 import _ from "lodash";
 
 export interface CarouselImage {
@@ -34,16 +34,14 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
   selector: 'app-carousel',
   standalone: true,
 	imports: [
-		NguCarousel,
-		NguItemComponent,
-		NguCarouselItemDirective,
-		NguCarouselDefDirective,
-		NgIf,
-		NguCarouselPrevDirective,
-		NguCarouselNextDirective,
-		NguCarouselPointDirective,
-		NgForOf
-	],
+    NguCarousel,
+    NguItemComponent,
+    NguCarouselItemDirective,
+    NguCarouselDefDirective,
+    NguCarouselPrevDirective,
+    NguCarouselNextDirective,
+    NguCarouselPointDirective
+],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss'
 })

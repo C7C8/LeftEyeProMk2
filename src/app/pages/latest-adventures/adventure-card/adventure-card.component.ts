@@ -7,7 +7,7 @@ import {
 	MatCardSubtitle,
 	MatCardTitle
 } from "@angular/material/card";
-import { NgIf, NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
 import { MarkdownComponent } from "ngx-markdown";
 import { MatIconButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
@@ -54,22 +54,21 @@ export interface AdventureCardData {
   selector: 'app-adventure-card',
   standalone: true,
 	imports: [
-		MatCard,
-		MatCardTitle,
-		MatCardSubtitle,
-		MatCardHeader,
-		NgIf,
-		NgOptimizedImage,
-		MatCardImage,
-		MatCardContent,
-		MarkdownComponent,
-		MatIconButton,
-		MatIcon,
-		MatDialogClose,
-		MatTooltip,
-		NguCarousel,
-		CarouselComponent
-	],
+    MatCard,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardHeader,
+    NgOptimizedImage,
+    MatCardImage,
+    MatCardContent,
+    MarkdownComponent,
+    MatIconButton,
+    MatIcon,
+    MatDialogClose,
+    MatTooltip,
+    NguCarousel,
+    CarouselComponent
+],
   templateUrl: './adventure-card.component.html',
   styleUrl: './adventure-card.component.scss'
 })

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RuntimeConfigFile, RuntimeConfigService } from "../../common/services/runtime-config.service";
 import { AdventureCardComponent, AdventureCardData } from "./adventure-card/adventure-card.component";
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
-import { NgForOf } from "@angular/common";
+
 import { MatPaginator } from "@angular/material/paginator";
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from "@angular/material/card";
 import _ from "lodash";
@@ -11,16 +11,15 @@ import _ from "lodash";
   selector: 'app-latest-adventures',
   standalone: true,
 	imports: [
-		MatGridList,
-		MatGridTile,
-		AdventureCardComponent,
-		NgForOf,
-		MatPaginator,
-		MatCard,
-		MatCardContent,
-		MatCardFooter,
-		MatCardHeader
-	],
+    MatGridList,
+    MatGridTile,
+    AdventureCardComponent,
+    MatPaginator,
+    MatCard,
+    MatCardContent,
+    MatCardFooter,
+    MatCardHeader
+],
   templateUrl: './latest-adventures.component.html',
   styleUrl: './latest-adventures.component.scss'
 })

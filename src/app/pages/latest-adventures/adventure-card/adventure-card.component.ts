@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
 	MatCard,
 	MatCardContent,
@@ -13,6 +13,8 @@ import { MatIconButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { MatDialog, MatDialogClose, MatDialogRef } from "@angular/material/dialog";
 import { MatTooltip } from "@angular/material/tooltip";
+import { CarouselComponent, CarouselImage } from "../../../common/components/carousel/carousel.component";
+import { NguCarousel } from "@ngu/carousel";
 
 /**
  * Adventure card data
@@ -60,19 +62,34 @@ export interface AdventureCardData {
 		MatIconButton,
 		MatIcon,
 		MatDialogClose,
-		MatTooltip
+		MatTooltip,
+		NguCarousel,
+		CarouselComponent
 	],
   templateUrl: './adventure-card.component.html',
   styleUrl: './adventure-card.component.scss'
 })
-export class AdventureCardComponent {
+export class AdventureCardComponent implements OnChanges {
 
 	@Input({required: true})
 	public adventure!: AdventureCardData;
+	protected carouselImages: CarouselImage[] = [];
 	protected dialogRef?: MatDialogRef<AdventureCardComponent> | null = null;
 
 	constructor(private dialog: MatDialog) {
 		this.dialogRef = inject(MatDialogRef<AdventureCardComponent>, {optional: true})
+	}
+
+	public ngOnChanges(changes: SimpleChanges) {
+		// No changes to the input adventure object, just break.
+		if (!changes["adventure"]) {
+			return;
+		}
+
+		this.carouselImages = this.adventure.images.map((url: string) => ({
+			image: url,
+			alt: url.split("/").pop() || url
+		}));
 	}
 
 	protected expandToDialog() {

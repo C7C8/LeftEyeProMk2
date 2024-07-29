@@ -31,7 +31,7 @@
 		</div>
 	</mat-card-header>
 
-	<img *ngIf="adventure.images.length > 0" [src]="adventure.images[0]" [alt]="adventure.images[0]" />
+	<app-carousel *ngIf="adventure.images.length > 0" [images]="carouselImages" [showPoints]="true" />
 
 	<mat-card-content>
 		<markdown [data]="adventure.content"/>

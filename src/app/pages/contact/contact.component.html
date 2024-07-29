@@ -58,13 +58,13 @@
 				send the generated message.
 			</p>
 
-			<mat-stepper orientation="vertical" linear>
+			<form [formGroup]="customContactForm">
+				<mat-stepper orientation="vertical" linear>
 
-				<!-- Step 1 -- Submitter contact info -->
-				<mat-step [stepControl]="customContactForm.controls.submitter"
-									[completed]="customContactForm.controls.submitter.valid">
-					<ng-template matStepLabel>Your contact information</ng-template>
-					<form [formGroup]="customContactForm.controls.submitter">
+					<!-- Step 1 -- Submitter contact info -->
+					<mat-step formGroupName="submitter"
+										[stepControl]="customContactForm.controls.submitter">
+						<ng-template matStepLabel>Your contact information</ng-template>
 						<div id="submitterInfoForm">
 							<mat-form-field appearance="outline" floatLabel="always">
 								<mat-label>Name</mat-label>
@@ -112,14 +112,75 @@
 
 							<button mat-raised-button
 											matStepperNext
+											type="button"
 											color="primary"
 											[disabled]="!customContactForm.controls.submitter.valid">
 								Next
 							</button>
 						</div>
-					</form>
-				</mat-step>
-			</mat-stepper>
+					</mat-step>
+
+					@for (requestControl of customContactForm.controls.requests.controls; track requestControl; let index = $index) {
+							<mat-step [formGroup]=requestControl
+												[stepControl]="requestControl"
+												[completed]="requestControl.valid">
+								<ng-template matStepLabel>Request #{{index + 1}}</ng-template>
+
+								<!-- Don't render the form until we actually switch to it.-->
+								<ng-template matStepContent>
+									<mat-form-field class="image-description">
+										<mat-label>Image Description</mat-label>
+										<input matInput formControlName="description" type="area">
+										@if (requestControl.controls["description"].invalid) {
+											<mat-error>
+												@if(requestControl.controls["description"].value.length < REQUEST_MIN_CHARS) {
+													{{requestControl.controls["description"].value.length}}/{{REQUEST_MIN_CHARS}} characters required
+												} @else if (requestControl.controls["description"].value.length > REQUEST_MAX_CHARS) {
+													{{requestControl.controls["description"].value.length}}/{{REQUEST_MAX_CHARS}} characters
+												}
+											</mat-error>
+										} @else {
+											<mat-hint>
+												{{requestControl.controls["description"].value.length}}/{{REQUEST_MAX_CHARS}} characters
+											</mat-hint>
+										}
+									</mat-form-field>
+
+									<div class="request-footer">
+										<mat-form-field appearance="outline" class="date-requirement-selector">
+											<mat-label>Image needed by</mat-label>
+											<input matInput
+														 [matDatepicker]="neededByPicker"
+														 [matDatepickerFilter]="datePickerFilter"
+														 formControlName="date_requirement">
+											<mat-datepicker-toggle matIconSuffix [for]="neededByPicker"></mat-datepicker-toggle>
+											<mat-datepicker #neededByPicker></mat-datepicker>
+										</mat-form-field>
+
+										<mat-form-field appearance="outline" class="accuracy-selector">
+											<mat-label>Accuracy to description</mat-label>
+											<mat-select formControlName="accuracy">
+												@for (accuracy of Object.values(ImageAccuracy); track accuracy) {
+													<mat-option [value]="accuracy">{{accuracy}}</mat-option>
+												}
+											</mat-select>
+										</mat-form-field>
+
+										<span class="spacer"></span>
+
+										<button mat-raised-button
+														matStepperNext
+														type="button"
+														color="primary"
+														[disabled]="!customContactForm.controls.submitter.valid">
+											Next
+										</button>
+									</div>
+								</ng-template>
+							</mat-step>
+					}
+				</mat-stepper>
+			</form>
 		</ng-template>
 	</mat-expansion-panel>
 </mat-accordion>

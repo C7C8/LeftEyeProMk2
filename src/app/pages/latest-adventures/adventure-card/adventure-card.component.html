@@ -3,12 +3,13 @@
 		<div id="header">
 			<!-- Header w/title on left and "expand" button on right -->
 			<div id="title">
-				<mat-card-title>{{adventure.title}}</mat-card-title>
+				<mat-card-title>{{ adventure.title }}</mat-card-title>
 				@if (adventure.subtitle) {
 					<mat-card-subtitle>
-						{{adventure.subtitle}}@if (adventure.date) {
-						<span> - {{adventure.date}}</span>
-					}
+						{{ adventure.subtitle }}
+						@if (adventure.date) {
+							<span> - {{ adventure.date }}</span>
+						}
 					</mat-card-subtitle>
 				}
 			</div>
@@ -17,32 +18,29 @@
 
 			<!-- If not a dialog, show an expand button. -->
 			@if (dialogRef === null) {
-				<button mat-icon-button
-								matTooltip="Open in expanded view"
-								[matTooltipShowDelay]="250"
-								(click)="expandToDialog()">
-					<mat-icon fontIcon="open_in_full"/>
+				<button
+					mat-icon-button
+					matTooltip="Open in expanded view"
+					[matTooltipShowDelay]="250"
+					(click)="expandToDialog()">
+					<mat-icon fontIcon="open_in_full" />
 				</button>
 			}
 
 			<!-- If we *are* a dialog, show a close button. -->
 			@if (dialogRef) {
-				<button mat-icon-button
-								matDialogClose
-								matTooltip="Close expanded view"
-								[matTooltipShowDelay]="250"
-				>
-					<mat-icon fontIcon="close"/>
+				<button mat-icon-button matDialogClose matTooltip="Close expanded view" [matTooltipShowDelay]="250">
+					<mat-icon fontIcon="close" />
 				</button>
 			}
 		</div>
 	</mat-card-header>
 
 	@if (adventure.images.length > 0) {
-		<app-carousel [images]="carouselImages" [carouselConfig]="carouselConfig" [showPoints]="true"/>
+		<app-carousel [images]="carouselImages" [carouselConfig]="carouselConfig" [showPoints]="true" />
 	}
 
 	<mat-card-content>
-		<markdown [data]="adventure.content"/>
+		<markdown [data]="adventure.content" />
 	</mat-card-content>
 </mat-card>

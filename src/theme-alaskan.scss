@@ -5,20 +5,21 @@
 
 // FONTS
 $typography-config: mat.m2-define-typography-config(
-	$font-family: mat.m2-define-typography-level(14px, 20px, 400, 'Playfair Display', 0.0179em),
-	$headline-1: mat.m2-define-typography-level(112px, 112px, 400, 'Abril Fatface', -0.0134em),
-	$headline-2: mat.m2-define-typography-level(56px, 56px, 400, 'Abril Fatface', -0.0089em),
-	$headline-3: mat.m2-define-typography-level(45px, 48px, 400, 'Abril Fatface', 0.0000em),
-	$headline-4: mat.m2-define-typography-level(34px, 40px, 400, 'Abril Fatface', 0.0074em),
-	$headline-5: mat.m2-define-typography-level(24px, 32px, 400, 'Abril Fatface', 0.0000em), // H1
-	$headline-6: mat.m2-define-typography-level(20px, 32px, 500, 'Quattrocento', 0.0075em),
-	$subtitle-2: mat.m2-define-typography-level(16px, 28px, 400, 'Quattrocento', 0.0094em),
-	$subtitle-1: mat.m2-define-typography-level(15px, 24px, 500, 'Quattrocentro', 0.0067em),
-	$body-2: mat.m2-define-typography-level(14px, 24px, 500, 'Playfair Display', 0.0179em),
-	$body-1: mat.m2-define-typography-level(14px, 20px, 400, 'Playfair Display', 0.0179em),
-	$button: mat.m2-define-typography-level(14px, 14px, 500, 'Playfair Display', 0.0893em),
-	$caption: mat.m2-define-typography-level(12px, 20px, 400, 'Playfair Display', 0.0333em),
-	$overline: mat.m2-define-typography-level(inherit, 1.125, 400, 'Playfair Display', 1.5px)
+	$font-family: mat.m2-define-typography-level(14px, 20px, 400, "Playfair Display", 0.0179em),
+	$headline-1: mat.m2-define-typography-level(112px, 112px, 400, "Abril Fatface", -0.0134em),
+	$headline-2: mat.m2-define-typography-level(56px, 56px, 400, "Abril Fatface", -0.0089em),
+	$headline-3: mat.m2-define-typography-level(45px, 48px, 400, "Abril Fatface", 0em),
+	$headline-4: mat.m2-define-typography-level(34px, 40px, 400, "Abril Fatface", 0.0074em),
+	$headline-5: mat.m2-define-typography-level(24px, 32px, 400, "Abril Fatface", 0em),
+	// H1
+	$headline-6: mat.m2-define-typography-level(20px, 32px, 500, "Quattrocento", 0.0075em),
+	$subtitle-2: mat.m2-define-typography-level(16px, 28px, 400, "Quattrocento", 0.0094em),
+	$subtitle-1: mat.m2-define-typography-level(15px, 24px, 500, "Quattrocentro", 0.0067em),
+	$body-2: mat.m2-define-typography-level(14px, 24px, 500, "Playfair Display", 0.0179em),
+	$body-1: mat.m2-define-typography-level(14px, 20px, 400, "Playfair Display", 0.0179em),
+	$button: mat.m2-define-typography-level(14px, 14px, 500, "Playfair Display", 0.0893em),
+	$caption: mat.m2-define-typography-level(12px, 20px, 400, "Playfair Display", 0.0333em),
+	$overline: mat.m2-define-typography-level(inherit, 1.125, 400, "Playfair Display", 1.5px)
 );
 
 // COLOR PALETTES
@@ -26,24 +27,27 @@ $alaskan-primary: mat.m2-define-palette(mat.$m2-blue-grey-palette);
 $alaskan-accent: mat.m2-define-palette(mat.$m2-light-blue-palette);
 $alaskan-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-$theme-alaskan-light: mat.m2-define-light-theme((
-	color: (
-		primary: $alaskan-primary,
-		accent: $alaskan-accent,
-		warn: $alaskan-warn
-	)
-));
-@include mat.all-component-typographies($typography-config);
-@include mat.all-component-themes($theme-alaskan-light);
-
-@media (prefers-color-scheme: light) {
-	$theme-alaskan-dark: mat.m2-define-dark-theme((
+$theme-alaskan-light: mat.m2-define-light-theme(
+	(
 		color: (
 			primary: $alaskan-primary,
 			accent: $alaskan-accent,
 			warn: $alaskan-warn
-		),
-	));
+		)
+	)
+);
+@include mat.all-component-typographies($typography-config);
+@include mat.all-component-themes($theme-alaskan-light);
+
+@media (prefers-color-scheme: light) {
+	$theme-alaskan-dark: mat.m2-define-dark-theme(
+		(
+			color: (
+				primary: $alaskan-primary,
+				accent: $alaskan-accent,
+				warn: $alaskan-warn
+			)
+		)
+	);
 	@include mat.all-component-themes($theme-alaskan-dark);
 }
-

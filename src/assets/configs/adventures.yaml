@@ -7,7 +7,7 @@
   subtitle: Katami Coast/Shelikof Straight
   images:
     - /assets/images/adventures/rough_seas/8_000234.jpg
-#    - /assets/images/adventures/rough_seas/9_000412.jpg
+    #    - /assets/images/adventures/rough_seas/9_000412.jpg
     - /assets/images/adventures/rough_seas/10_001360.jpg
     - /assets/images/adventures/rough_seas/11_001192.jpg
     - /assets/images/adventures/rough_seas/12_001926.jpg
@@ -42,9 +42,9 @@
   images:
     - /assets/images/adventures/polar_bear_play/1_001830.jpg
     - /assets/images/adventures/polar_bear_play/2_001833.jpg
-#    - /assets/images/adventures/polar_bear_play/3_001832.jpg
+    #    - /assets/images/adventures/polar_bear_play/3_001832.jpg
     - /assets/images/adventures/polar_bear_play/4_001837.jpg
-#    - /assets/images/adventures/polar_bear_play/5_000123.jpg
+    #    - /assets/images/adventures/polar_bear_play/5_000123.jpg
     - /assets/images/adventures/polar_bear_play/6_001899.jpg
     - /assets/images/adventures/polar_bear_play/7_001840.jpg
   content: |-
@@ -73,7 +73,7 @@
     - /assets/images/adventures/search_for_the_spirit_bear/4_004661.jpg
     - /assets/images/adventures/search_for_the_spirit_bear/5_002302.jpg
     - /assets/images/adventures/search_for_the_spirit_bear/6_001808.jpg
-#    - /assets/images/adventures/search_for_the_spirit_bear/7_001805.jpg
+    #    - /assets/images/adventures/search_for_the_spirit_bear/7_001805.jpg
     - /assets/images/adventures/search_for_the_spirit_bear/8_004729.jpg
   content: >-
     Native Americans believed that when the glaciers of the ice age retreated in the north, the

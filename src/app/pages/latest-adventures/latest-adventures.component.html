@@ -16,10 +16,10 @@
 			<mat-paginator
 				#paginator
 				[length]="adventures.length"
-				pageSize="6" [pageSizeOptions]="[3,6,9,12,15]"
+				pageSize="6"
+				[pageSizeOptions]="[3, 6, 9, 12, 15]"
 				aria-label="Select page"
-				(page)="setPage($event.pageIndex, $event.pageSize)"
-			/>
+				(page)="setPage($event.pageIndex, $event.pageSize)" />
 		</mat-card-footer>
 	</mat-card>
 </div>

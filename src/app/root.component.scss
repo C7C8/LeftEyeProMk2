@@ -36,7 +36,6 @@ mat-toolbar {
 	}
 
 	button + button {
-
 	}
 }
 
@@ -65,11 +64,12 @@ mat-toolbar {
 			flex-direction: row;
 			justify-content: space-evenly;
 
-			background: linear-gradient(90deg,
-				rgba(0,0,0,0) 0%,
-				rgba(2,95,137, 0.66) 25%,
-				rgba(2,95,137, 0.66) 75%,
-				rgba(0,0,0,0) 100%
+			background: linear-gradient(
+				90deg,
+				rgba(0, 0, 0, 0) 0%,
+				rgba(2, 95, 137, 0.66) 25%,
+				rgba(2, 95, 137, 0.66) 75%,
+				rgba(0, 0, 0, 0) 100%
 			);
 
 			img {

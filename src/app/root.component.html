@@ -1,8 +1,7 @@
 <mat-toolbar>
-
 	<!-- Hackey router.navigate to make this whole thing a link w/o applying link styles. I'm ambitiously lazy. -->
 	<div class="header-title-container" (click)="router.navigate(['/'])">
-		<img ngSrc="/assets/images/lep_logo.png" width="123" height="121" alt="LEP logo"/>
+		<img ngSrc="/assets/images/lep_logo.png" width="123" height="121" alt="LEP logo" />
 		<div class="title-container">
 			<span class="header-title-main">Left Eye Productions</span>
 			<span class="header-title-sub">Steven Kazlowski</span>
@@ -20,7 +19,6 @@
 	<button mat-button [routerLink]="['/current-project']">Current Project</button>
 	<span class="middot">&middot;</span>
 	<button mat-button (click)="openContactForm()">Contact</button>
-
 </mat-toolbar>
 
 <div class="content-container" (konami)="openCredits()">
@@ -32,20 +30,20 @@
 		<!-- Publications bar, mimicking original website -->
 		<div class="publications">
 			@for (image of publicationImages; track image) {
-				<img [src]="image" [alt]="image.split('/').pop()"/>
+				<img [src]="image" [alt]="image.split('/').pop()" />
 			}
 		</div>
 
 		<!-- Standard logo + copyright + contact footer -->
 		<div class="footer-content">
-			<img ngSrc="/assets/favicon.ico" width="64" height="64" alt="lep logo">
+			<img ngSrc="/assets/favicon.ico" width="64" height="64" alt="lep logo" />
 			<div>
 				<!-- TODO: Verify phone number -->
-				<a href="mailto:steven@lefteyepro.com"><mat-icon fontIcon="mail"/>steven&commat;lefteyepro.com</a>
-				<a href="tel:13607794350"><mat-icon fontIcon="call"/>+1 (360) 779-4350</a>
+				<a href="mailto:steven@lefteyepro.com"><mat-icon fontIcon="mail" />steven&commat;lefteyepro.com</a>
+				<a href="tel:13607794350"><mat-icon fontIcon="call" />+1 (360) 779-4350</a>
 			</div>
 			<!-- TODO: Verify copyright years -->
-			<div>&copy; 2005-{{year()}} Steven Kazlowski / Left Eye Productions. All Rights Reserved</div>
+			<div>&copy; 2005-{{ year() }} Steven Kazlowski / Left Eye Productions. All Rights Reserved</div>
 		</div>
 	</footer>
 </div>

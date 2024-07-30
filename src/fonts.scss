@@ -1,36 +1,32 @@
-
 // Titles
 @font-face {
 	font-family: "Abril Fatface";
-	src: url("/assets/fonts/AbrilFatface-Regular.ttf")
+	src: url("/assets/fonts/AbrilFatface-Regular.ttf");
 }
 
 // Section headings
 @font-face {
 	font-family: "Quattrocento";
-	src:
-		url("/assets/fonts/Quattrocento-Regular.ttf"),
-		url("/assets/fonts/Quattrocento-Bold.ttf")
+	src: url("/assets/fonts/Quattrocento-Regular.ttf"), url("/assets/fonts/Quattrocento-Bold.ttf");
 }
 
 // Main body
 @font-face {
 	font-family: "Playfair Display";
-	src:
-		url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf"),
-		url("/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf")
+	src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf"),
+		url("/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf");
 }
 
 // Icons
 @font-face {
-	font-family: 'Material Icons';
+	font-family: "Material Icons";
 	font-style: normal;
 	font-weight: 400;
-	src: url("/assets/fonts/Material Icons.woff2") format('woff2');
+	src: url("/assets/fonts/Material Icons.woff2") format("woff2");
 }
 
 .material-icons {
-	font-family: 'Material Icons';
+	font-family: "Material Icons";
 	font-weight: normal;
 	font-style: normal;
 	font-size: 24px;
@@ -41,6 +37,6 @@
 	white-space: nowrap;
 	word-wrap: normal;
 	direction: ltr;
-	-moz-font-feature-settings: 'liga';
+	-moz-font-feature-settings: "liga";
 	-moz-osx-font-smoothing: grayscale;
 }

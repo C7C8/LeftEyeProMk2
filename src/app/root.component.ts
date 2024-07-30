@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 import { MatToolbar } from "@angular/material/toolbar";
 import { NgOptimizedImage } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
@@ -11,23 +11,23 @@ import { KonamiDirective } from "./common/directives/konami.directive";
 import { ContactComponent } from "./pages/contact/contact.component";
 
 @Component({
-	selector: 'app-root',
+	selector: "app-root",
 	standalone: true,
 	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective],
-	templateUrl: './root.component.html',
-	styleUrl: './root.component.scss'
+	templateUrl: "./root.component.html",
+	styleUrl: "./root.component.scss"
 })
 export class RootComponent implements OnInit {
-
 	protected publicationImages: string[] = [];
 
 	constructor(
 		protected router: Router,
 		protected runtimeConfig: RuntimeConfigService,
-		protected dialog: MatDialog) {}
+		protected dialog: MatDialog
+	) {}
 
 	async ngOnInit(): Promise<void> {
-		this.publicationImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS) as string[];
+		this.publicationImages = (await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS)) as string[];
 	}
 
 	protected openCredits() {
@@ -39,10 +39,10 @@ export class RootComponent implements OnInit {
 	protected openContactForm() {
 		this.dialog.open(ContactComponent, {
 			width: "60vw"
-		})
+		});
 	}
 
 	year(): number {
-		return (new Date()).getFullYear();
+		return new Date().getFullYear();
 	}
 }

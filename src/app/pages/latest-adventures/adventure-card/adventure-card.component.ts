@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges } from "@angular/core";
 import {
 	MatCard,
 	MatCardContent,
@@ -51,7 +51,7 @@ export interface AdventureCardData {
 }
 
 @Component({
-	selector: 'app-adventure-card',
+	selector: "app-adventure-card",
 	standalone: true,
 	imports: [
 		MatCard,
@@ -69,32 +69,35 @@ export interface AdventureCardData {
 		NguCarousel,
 		CarouselComponent
 	],
-	templateUrl: './adventure-card.component.html',
-	styleUrl: './adventure-card.component.scss'
+	templateUrl: "./adventure-card.component.html",
+	styleUrl: "./adventure-card.component.scss"
 })
 export class AdventureCardComponent implements OnChanges {
-
-	@Input({required: true})
+	@Input({ required: true })
 	public adventure!: AdventureCardData;
 	protected dialogRef?: MatDialogRef<AdventureCardComponent> | null = null;
 
 	// Carousel config.
 	// https://www.youtube.com/watch?v=bgs9OhjAE2g
 	protected carouselImages: CarouselImage[] = [];
-	private static readonly INTERVAL_BASE_MS= 10000;
+	private static readonly INTERVAL_BASE_MS = 10000;
 	private static readonly INTERVAL_JITTER_MS = 2500;
 	protected readonly carouselConfig: NguCarouselConfig = {
 		...DEFAULT_CAROUSEL_CONFIG,
 		interval: {
 			// Give some random jitter to timings, base +/- (random * jitter).
 			// This stops carousel images from creepily all changing at the same time.
-			timing: AdventureCardComponent.INTERVAL_BASE_MS + ((Math.random() * AdventureCardComponent.INTERVAL_JITTER_MS * 2) - AdventureCardComponent.INTERVAL_JITTER_MS),
-			initialDelay: AdventureCardComponent.INTERVAL_BASE_MS + ((Math.random() * AdventureCardComponent.INTERVAL_JITTER_MS * 2) - AdventureCardComponent.INTERVAL_JITTER_MS),
+			timing:
+				AdventureCardComponent.INTERVAL_BASE_MS +
+				(Math.random() * AdventureCardComponent.INTERVAL_JITTER_MS * 2 - AdventureCardComponent.INTERVAL_JITTER_MS),
+			initialDelay:
+				AdventureCardComponent.INTERVAL_BASE_MS +
+				(Math.random() * AdventureCardComponent.INTERVAL_JITTER_MS * 2 - AdventureCardComponent.INTERVAL_JITTER_MS)
 		}
-	}
+	};
 
 	constructor(private dialog: MatDialog) {
-		this.dialogRef = inject(MatDialogRef<AdventureCardComponent>, {optional: true})
+		this.dialogRef = inject(MatDialogRef<AdventureCardComponent>, { optional: true });
 	}
 
 	public ngOnChanges(changes: SimpleChanges) {

@@ -1,12 +1,13 @@
 <div class="carousel-container">
 	<ngu-carousel #carousel [inputs]="carouselConfig" [dataSource]="images">
-		<ngu-item NguCarouselItem *nguCarouselDef="let item;">
-			<img [src]="item.image" [alt]="item.alt"/>
+		<ngu-item NguCarouselItem *nguCarouselDef="let item">
+			<img [src]="item.image" [alt]="item.alt" />
 			@if (item.caption) {
-				<div class="caption"><em>{{item.caption}}</em></div>
+				<div class="caption">
+					<em>{{ item.caption }}</em>
+				</div>
 			}
 		</ngu-item>
-
 	</ngu-carousel>
 
 	<!-- Carousel points -- indicates which image you're on. -->

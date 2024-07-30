@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { MatDialogClose, MatDialogRef, MatDialogTitle } from "@angular/material/dialog";
 import {
 	MatAccordion,
@@ -40,7 +40,7 @@ enum ImageAccuracy {
 }
 
 @Component({
-	selector: 'app-contact',
+	selector: "app-contact",
 	standalone: true,
 	imports: [
 		MatDialogTitle,
@@ -79,11 +79,11 @@ enum ImageAccuracy {
 		MatIconButton,
 		MatDialogClose
 	],
-	templateUrl: './contact.component.html',
-	styleUrl: './contact.component.scss'
+	templateUrl: "./contact.component.html",
+	styleUrl: "./contact.component.scss"
 })
 export class ContactComponent {
-	protected readonly EMAIL = "steven@lefteyepro.com"
+	protected readonly EMAIL = "steven@lefteyepro.com";
 	protected readonly REQUEST_MIN_CHARS = 15;
 	protected readonly REQUEST_MAX_CHARS = 1000;
 
@@ -96,16 +96,22 @@ export class ContactComponent {
 			requestsCount: [1, [Validators.min(1), Validators.max(100)]]
 		}),
 		requests: this.formBuilder.array([this.makeImageRequest()], Validators.minLength(1))
-	})
+	});
 
-	constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<ContactComponent>) { }
+	constructor(
+		private formBuilder: FormBuilder,
+		private dialogRef: MatDialogRef<ContactComponent>
+	) {}
 
 	protected makeImageRequest(): FormGroup {
 		return this.formBuilder.group({
-			description: ["", [Validators.required, Validators.minLength(this.REQUEST_MIN_CHARS), Validators.maxLength(1000)]],
-			accuracy: [ImageAccuracy.CLOSE, [Validators.required, Validators.pattern( /^(Close|Very close|Exact)$/)]],
-			date_requirement: [new Date(Date.now() + 2 * 1000 * 60 * 60 * 24)],
-		})
+			description: [
+				"",
+				[Validators.required, Validators.minLength(this.REQUEST_MIN_CHARS), Validators.maxLength(1000)]
+			],
+			accuracy: [ImageAccuracy.CLOSE, [Validators.required, Validators.pattern(/^(Close|Very close|Exact)$/)]],
+			date_requirement: [new Date(Date.now() + 2 * 1000 * 60 * 60 * 24)]
+		});
 	}
 
 	protected datePickerFilter(date: Date | null): boolean {
@@ -113,7 +119,7 @@ export class ContactComponent {
 			return false;
 		}
 
-		return date.getTime() - Date.now() > (1000 * 60 * 60 * 24);
+		return date.getTime() - Date.now() > 1000 * 60 * 60 * 24;
 	}
 
 	protected onChangeRequests() {
@@ -124,21 +130,23 @@ export class ContactComponent {
 
 		// Too many forms
 		while (newRequests < this.customContactForm.controls.requests.length) {
-			this.customContactForm.controls.requests.removeAt(this.customContactForm.controls.requests.length - 1)
+			this.customContactForm.controls.requests.removeAt(this.customContactForm.controls.requests.length - 1);
 		}
 
 		// Not enough forms
 		while (newRequests > this.customContactForm.controls.requests.length) {
-			this.customContactForm.controls.requests.push(this.makeImageRequest())
+			this.customContactForm.controls.requests.push(this.makeImageRequest());
 		}
 	}
 
 	protected onSubmit(): void {
 		// TODO Improve formatting of sent email
 		const formValue = this.customContactForm.value;
-		console.debug("Submitting contact form", formValue)
-		const message_body = encodeURIComponent(YAML.stringify(this.customContactForm.value))
-		const subject_line = encodeURIComponent(`Contact form request from ${formValue.submitter?.name} for ${formValue.submitter?.requestsCount} images`);
+		console.debug("Submitting contact form", formValue);
+		const message_body = encodeURIComponent(YAML.stringify(this.customContactForm.value));
+		const subject_line = encodeURIComponent(
+			`Contact form request from ${formValue.submitter?.name} for ${formValue.submitter?.requestsCount} images`
+		);
 		const uri = `mailto:${this.EMAIL}?subject=${subject_line}&body=${message_body}`;
 		console.debug("Contact form URI", uri);
 		window.open(uri);

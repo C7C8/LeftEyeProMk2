@@ -30,8 +30,8 @@
 		li {
 			display: inline-block;
 			border-radius: 50%;
-			padding: 0.20em;
-			background: #6B6B6BCC;
+			padding: 0.2em;
+			background: #6b6b6bcc;
 			margin: 0 0.5em;
 			transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
 			transition: 0.4s;
@@ -39,7 +39,7 @@
 		}
 
 		li.active {
-			background: #ABABABCC;
+			background: #abababcc;
 		}
 	}
 

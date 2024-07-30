@@ -7,7 +7,8 @@
 		"build": "ng build -c production --aot --optimization",
 		"watch": "ng build --watch --configuration development",
 		"serve:ssr:left-eye-pro-mk2": "node dist/left-eye-pro-mk2/server/server.mjs",
-		"lint": "ng lint"
+		"lint": "ng lint",
+		"prettier": "npx prettier --write ."
 	},
 	"private": true,
 	"dependencies": {
@@ -46,6 +47,7 @@
 		"angular-eslint": "18.1.0",
 		"eslint": "^9.6.0",
 		"jasmine-core": "~5.1.0",
+		"prettier": "^3.3.3",
 		"typescript": "~5.5.4",
 		"typescript-eslint": "8.0.0-alpha.38"
 	},

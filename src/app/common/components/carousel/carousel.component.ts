@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input } from "@angular/core";
 import {
 	NguCarousel,
 	NguCarouselConfig,
@@ -22,7 +22,7 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 	grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
 	slide: 2,
 	speed: 600,
-	animation: 'lazy',
+	animation: "lazy",
 	interval: { initialDelay: 10000, timing: 10000 },
 	loop: true,
 	point: {
@@ -30,11 +30,11 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 	},
 	load: 2,
 	touch: false,
-	easing: 'ease',
+	easing: "ease"
 };
 
 @Component({
-	selector: 'app-carousel',
+	selector: "app-carousel",
 	standalone: true,
 	imports: [
 		NguCarousel,
@@ -45,8 +45,8 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 		NguCarouselNextDirective,
 		NguCarouselPointDirective
 	],
-	templateUrl: './carousel.component.html',
-	styleUrl: './carousel.component.scss'
+	templateUrl: "./carousel.component.html",
+	styleUrl: "./carousel.component.scss"
 })
 export class CarouselComponent implements AfterViewInit {
 	@Input() images: CarouselImage[] = [];
@@ -56,7 +56,7 @@ export class CarouselComponent implements AfterViewInit {
 
 	constructor(private cdr: ChangeDetectorRef) {
 		if (this.shuffle) {
-			this.images = _.shuffle(this.images)
+			this.images = _.shuffle(this.images);
 		}
 	}
 

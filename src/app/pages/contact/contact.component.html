@@ -11,13 +11,13 @@
 <!-- -----------Fuck all ye who enter here ------------->
 
 <mat-accordion>
-
 	<!-- Base "here's our info, do it yourself" form -->
 	<mat-expansion-panel hideToggle expanded>
-
 		<mat-expansion-panel-header>
 			<mat-panel-title>Contact Information</mat-panel-title>
-			<mat-panel-description>Phone, email, or send us a letter. <mat-icon>contact_page</mat-icon></mat-panel-description>
+			<mat-panel-description
+				>Phone, email, or send us a letter. <mat-icon>contact_page</mat-icon></mat-panel-description
+			>
 		</mat-expansion-panel-header>
 
 		Please contact us using any of the below means:
@@ -25,14 +25,14 @@
 		<mat-card id="contact-info-card">
 			<mat-card-content>
 				<span><mat-icon>mail</mat-icon> Email</span>
-				<a [href]="'mailto:' + EMAIL">{{EMAIL}}</a>
+				<a [href]="'mailto:' + EMAIL">{{ EMAIL }}</a>
 
-				<mat-divider/>
+				<mat-divider />
 
 				<span><mat-icon>call</mat-icon> Phone</span>
 				<a href="tel:13607794350">+1 (360) 779-4350</a>
 
-				<mat-divider/>
+				<mat-divider />
 
 				<span><mat-icon>home</mat-icon> Send us a letter</span>
 				<div>
@@ -43,7 +43,6 @@
 				</div>
 			</mat-card-content>
 		</mat-card>
-
 	</mat-expansion-panel>
 
 	<!-- Custom contact form -->
@@ -56,23 +55,21 @@
 		<!-- Lazy load the stepper so we don't slow down the basic contact info section -->
 		<ng-template matExpansionPanelContent>
 			<p>
-				Know what you want but can't find it? Would you like us to do the research for you free of charge? We will search
-				a particular image, subject matter, or other special requirement and submit back electronically for your
+				Know what you want but can't find it? Would you like us to do the research for you free of charge? We will
+				search a particular image, subject matter, or other special requirement and submit back electronically for your
 				consideration. We will search your request and get back to you within 24 hours, just fill out the form below and
 				send the generated message.
 			</p>
 
 			<form [formGroup]="customContactForm" (ngSubmit)="onSubmit()">
 				<mat-stepper orientation="vertical" linear>
-
 					<!-- Step 1 -- Submitter contact info -->
-					<mat-step formGroupName="submitter"
-										[stepControl]="customContactForm.controls.submitter">
+					<mat-step formGroupName="submitter" [stepControl]="customContactForm.controls.submitter">
 						<ng-template matStepLabel>Your contact information</ng-template>
 						<div id="submitterInfoForm">
 							<mat-form-field appearance="outline" floatLabel="always">
 								<mat-label>Name</mat-label>
-								<input matInput formControlName="name">
+								<input matInput formControlName="name" />
 								<mat-icon matTextPrefix>person</mat-icon>
 								@if (customContactForm.controls.submitter.controls.name.invalid) {
 									<mat-error>Name is required</mat-error>
@@ -82,12 +79,12 @@
 							<mat-form-field appearance="outline" floatLabel="always">
 								<mat-label>Company</mat-label>
 								<mat-icon matTextPrefix>apartment</mat-icon>
-								<input matInput formControlName="company">
+								<input matInput formControlName="company" />
 							</mat-form-field>
 
 							<mat-form-field appearance="outline" floatLabel="always">
 								<mat-label>Phone Number</mat-label>
-								<input matInput placeholder="+# (###) ###-####" formControlName="phone">
+								<input matInput placeholder="+# (###) ###-####" formControlName="phone" />
 								<mat-icon matTextPrefix>phone</mat-icon>
 								@if (customContactForm.controls.submitter.controls.phone.invalid) {
 									<mat-error>Invalid number: +# (###) ###-####</mat-error>
@@ -96,92 +93,101 @@
 
 							<mat-form-field appearance="outline" floatLabel="always">
 								<mat-label>Email</mat-label>
-								<input matInput formControlName="email">
+								<input matInput formControlName="email" />
 								<mat-icon matTextPrefix>mail</mat-icon>
 								@if (customContactForm.controls.submitter.controls.email.invalid) {
 									<mat-error>Invalid email</mat-error>
 								}
 							</mat-form-field>
-
 						</div>
 
 						<div id="submitterInfoFooter">
 							<span>
 								I have
 								<mat-form-field appearance="outline">
-									<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()">
+									<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()" />
 								</mat-form-field>
-								image request@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
+								image request
+								@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {
+									s
+								}
+								.
 							</span>
 
-							<button mat-raised-button
-											matStepperNext
-											type="button"
-											color="primary"
-											[disabled]="!customContactForm.controls.submitter.valid">
+							<button
+								mat-raised-button
+								matStepperNext
+								type="button"
+								color="primary"
+								[disabled]="!customContactForm.controls.submitter.valid">
 								Next
 							</button>
 						</div>
 					</mat-step>
 
-					@for (requestControl of customContactForm.controls.requests.controls; track requestControl; let index = $index) {
-							<mat-step [formGroup]=requestControl
-												[stepControl]="requestControl"
-												[completed]="requestControl.valid">
-								<ng-template matStepLabel>Request #{{index + 1}}</ng-template>
+					@for (
+						requestControl of customContactForm.controls.requests.controls;
+						track requestControl;
+						let index = $index
+					) {
+						<mat-step [formGroup]="requestControl" [stepControl]="requestControl" [completed]="requestControl.valid">
+							<ng-template matStepLabel>Request #{{ index + 1 }}</ng-template>
 
-								<!-- Don't render the form until we actually switch to it.-->
-								<ng-template matStepContent>
-									<mat-form-field class="image-description">
-										<mat-label>Image Description</mat-label>
-										<input matInput formControlName="description" type="area">
-										@if (requestControl.controls["description"].invalid) {
-											<mat-error>
-												@if(requestControl.controls["description"].value.length < REQUEST_MIN_CHARS) {
-													{{requestControl.controls["description"].value.length}}/{{REQUEST_MIN_CHARS}} characters required
-												} @else if (requestControl.controls["description"].value.length > REQUEST_MAX_CHARS) {
-													{{requestControl.controls["description"].value.length}}/{{REQUEST_MAX_CHARS}} characters
-												}
-											</mat-error>
-										} @else {
-											<mat-hint>
-												{{requestControl.controls["description"].value.length}}/{{REQUEST_MAX_CHARS}} characters
-											</mat-hint>
-										}
+							<!-- Don't render the form until we actually switch to it.-->
+							<ng-template matStepContent>
+								<mat-form-field class="image-description">
+									<mat-label>Image Description</mat-label>
+									<input matInput formControlName="description" type="area" />
+									@if (requestControl.controls["description"].invalid) {
+										<mat-error>
+											@if (requestControl.controls["description"].value.length < REQUEST_MIN_CHARS) {
+												{{ requestControl.controls["description"].value.length }}/{{ REQUEST_MIN_CHARS }} characters
+												required
+											} @else if (requestControl.controls["description"].value.length > REQUEST_MAX_CHARS) {
+												{{ requestControl.controls["description"].value.length }}/{{ REQUEST_MAX_CHARS }} characters
+											}
+										</mat-error>
+									} @else {
+										<mat-hint>
+											{{ requestControl.controls["description"].value.length }}/{{ REQUEST_MAX_CHARS }} characters
+										</mat-hint>
+									}
+								</mat-form-field>
+
+								<div class="request-footer spaceable">
+									<mat-form-field appearance="outline" class="date-requirement-selector">
+										<mat-label>Image needed by</mat-label>
+										<input
+											matInput
+											[matDatepicker]="neededByPicker"
+											[matDatepickerFilter]="datePickerFilter"
+											formControlName="date_requirement" />
+										<mat-datepicker-toggle matIconSuffix [for]="neededByPicker"></mat-datepicker-toggle>
+										<mat-datepicker #neededByPicker></mat-datepicker>
 									</mat-form-field>
 
-									<div class="request-footer spaceable">
-										<mat-form-field appearance="outline" class="date-requirement-selector">
-											<mat-label>Image needed by</mat-label>
-											<input matInput
-														 [matDatepicker]="neededByPicker"
-														 [matDatepickerFilter]="datePickerFilter"
-														 formControlName="date_requirement">
-											<mat-datepicker-toggle matIconSuffix [for]="neededByPicker"></mat-datepicker-toggle>
-											<mat-datepicker #neededByPicker></mat-datepicker>
-										</mat-form-field>
+									<mat-form-field appearance="outline" class="accuracy-selector">
+										<mat-label>Accuracy to description</mat-label>
+										<mat-select formControlName="accuracy">
+											@for (accuracy of Object.values(ImageAccuracy); track accuracy) {
+												<mat-option [value]="accuracy">{{ accuracy }}</mat-option>
+											}
+										</mat-select>
+									</mat-form-field>
 
-										<mat-form-field appearance="outline" class="accuracy-selector">
-											<mat-label>Accuracy to description</mat-label>
-											<mat-select formControlName="accuracy">
-												@for (accuracy of Object.values(ImageAccuracy); track accuracy) {
-													<mat-option [value]="accuracy">{{accuracy}}</mat-option>
-												}
-											</mat-select>
-										</mat-form-field>
+									<span class="spacer"></span>
 
-										<span class="spacer"></span>
-
-										<button mat-raised-button
-														matStepperNext
-														type="button"
-														color="primary"
-														[disabled]="!requestControl.valid">
-											Next
-										</button>
-									</div>
-								</ng-template>
-							</mat-step>
+									<button
+										mat-raised-button
+										matStepperNext
+										type="button"
+										color="primary"
+										[disabled]="!requestControl.valid">
+										Next
+									</button>
+								</div>
+							</ng-template>
+						</mat-step>
 					}
 
 					<mat-step>

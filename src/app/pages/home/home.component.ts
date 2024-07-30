@@ -3,13 +3,13 @@ import { CarouselComponent, CarouselImage } from "../../common/components/carous
 import { RuntimeConfigFile, RuntimeConfigService } from "../../common/services/runtime-config.service";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
+	selector: 'app-home',
+	standalone: true,
 	imports: [
 		CarouselComponent
 	],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+	templateUrl: './home.component.html',
+	styleUrl: './home.component.scss'
 })
 export class HomeComponent implements  OnInit{
 
@@ -18,6 +18,6 @@ export class HomeComponent implements  OnInit{
 	constructor(private runtimeConfig: RuntimeConfigService) { }
 
 	public async ngOnInit(): Promise<void> {
-		this.carouselImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.HERO_IMAGES);
+		this.carouselImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.HERO_IMAGES) as CarouselImage[];
 	}
 }

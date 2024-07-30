@@ -3,8 +3,8 @@ import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } fr
 import { MatButton } from "@angular/material/button";
 
 @Component({
-  selector: 'app-author-popup',
-  standalone: true,
+	selector: 'app-author-popup',
+	standalone: true,
 	imports: [
 		MatDialogTitle,
 		MatDialogContent,
@@ -12,8 +12,8 @@ import { MatButton } from "@angular/material/button";
 		MatButton,
 		MatDialogClose
 	],
-  templateUrl: './credits-popup.component.html',
-  styleUrl: './credits-popup.component.scss'
+	templateUrl: './credits-popup.component.html',
+	styleUrl: './credits-popup.component.scss'
 })
 export class CreditsPopupComponent {
 

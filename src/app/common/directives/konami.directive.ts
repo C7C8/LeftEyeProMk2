@@ -6,8 +6,8 @@ import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
  * Adapted from https://dev.to/rfornal/angular-konami-code-3fk
  */
 @Directive({
-  selector: '[konami]',
-  standalone: true
+	selector: '[konami]',
+	standalone: true
 })
 export class KonamiDirective {
 
@@ -21,18 +21,16 @@ export class KonamiDirective {
 		'b', 'a'
 	];
 
-	constructor() {}
-
 	@HostListener('window:keydown', ['$event'])
 	handleKeyboardEvent(event: KeyboardEvent) {
 		if (event.key) {
 			this.sequence.push(event.key.toLowerCase());
 
-      if (this.sequence.length > this.konamiCode.length) {
+			if (this.sequence.length > this.konamiCode.length) {
 				this.sequence.shift();
 			}
 
-      if (this.isKonamiCode()) {
+			if (this.isKonamiCode()) {
 				this.konami.emit();
 			}
 		}

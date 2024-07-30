@@ -1,4 +1,4 @@
-export type ImageData = {
+export interface ImageData {
 	/**
 	 * URL to a low-res preview of the image.
 	 */
@@ -25,7 +25,7 @@ export type ImageData = {
 	yTiles?: number;
 }
 
-export type Category = {
+export interface Category {
 	/**
 	 * Human-readable name for the category.
 	 */

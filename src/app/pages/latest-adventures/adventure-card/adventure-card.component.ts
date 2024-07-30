@@ -51,26 +51,26 @@ export interface AdventureCardData {
 }
 
 @Component({
-  selector: 'app-adventure-card',
-  standalone: true,
+	selector: 'app-adventure-card',
+	standalone: true,
 	imports: [
-    MatCard,
-    MatCardTitle,
-    MatCardSubtitle,
-    MatCardHeader,
-    NgOptimizedImage,
-    MatCardImage,
-    MatCardContent,
-    MarkdownComponent,
-    MatIconButton,
-    MatIcon,
-    MatDialogClose,
-    MatTooltip,
-    NguCarousel,
-    CarouselComponent
-],
-  templateUrl: './adventure-card.component.html',
-  styleUrl: './adventure-card.component.scss'
+		MatCard,
+		MatCardTitle,
+		MatCardSubtitle,
+		MatCardHeader,
+		NgOptimizedImage,
+		MatCardImage,
+		MatCardContent,
+		MarkdownComponent,
+		MatIconButton,
+		MatIcon,
+		MatDialogClose,
+		MatTooltip,
+		NguCarousel,
+		CarouselComponent
+	],
+	templateUrl: './adventure-card.component.html',
+	styleUrl: './adventure-card.component.scss'
 })
 export class AdventureCardComponent implements OnChanges {
 

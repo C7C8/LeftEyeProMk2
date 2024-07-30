@@ -49,7 +49,7 @@
 							"src/assets"
 						],
 						"styles": [
-              "src/styles.scss"
+							"src/styles.scss"
 						],
 						"scripts": [],
 						"server": "src/main.server.ts",
@@ -99,8 +99,22 @@
 					"options": {
 						"buildTarget": "left-eye-pro-mk2:build"
 					}
+				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"src/**/*.ts",
+							"src/**/*.html"
+						]
+					}
 				}
 			}
 		}
+	},
+	"cli": {
+		"schematicCollections": [
+			"@angular-eslint/schematics"
+		]
 	}
 }

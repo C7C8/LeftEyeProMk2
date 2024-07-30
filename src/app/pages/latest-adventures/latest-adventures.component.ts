@@ -8,20 +8,20 @@ import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from "@angular/
 import _ from "lodash";
 
 @Component({
-  selector: 'app-latest-adventures',
-  standalone: true,
+	selector: 'app-latest-adventures',
+	standalone: true,
 	imports: [
-    MatGridList,
-    MatGridTile,
-    AdventureCardComponent,
-    MatPaginator,
-    MatCard,
-    MatCardContent,
-    MatCardFooter,
-    MatCardHeader
-],
-  templateUrl: './latest-adventures.component.html',
-  styleUrl: './latest-adventures.component.scss'
+		MatGridList,
+		MatGridTile,
+		AdventureCardComponent,
+		MatPaginator,
+		MatCard,
+		MatCardContent,
+		MatCardFooter,
+		MatCardHeader
+	],
+	templateUrl: './latest-adventures.component.html',
+	styleUrl: './latest-adventures.component.scss'
 })
 export class LatestAdventuresComponent implements OnInit {
 
@@ -33,7 +33,7 @@ export class LatestAdventuresComponent implements OnInit {
 
 	public async ngOnInit(): Promise<void> {
 		// Load in saved adventures
-		this.adventures = await this.runtimeConfig.getConfig(RuntimeConfigFile.ADVENTURES);
+		this.adventures = await this.runtimeConfig.getConfig(RuntimeConfigFile.ADVENTURES) as AdventureCardData[];
 		this.setPage(this.paginator.pageIndex, this.paginator.pageSize);
 	}
 

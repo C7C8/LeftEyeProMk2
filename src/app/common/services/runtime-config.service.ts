@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { firstValueFrom } from "rxjs";
 import YAML from "yaml"
-import { Location } from "@angular/common";
 
 export enum RuntimeConfigFile {
 	HERO_IMAGES = "/assets/configs/hero_images.yaml",
@@ -19,19 +18,19 @@ export enum RuntimeConfigFile {
  * May be useful for dynamic editing of configs in the future.
  */
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class RuntimeConfigService {
 
-	private static cache: Map<string, any> = new Map<string, any>();
+	private static cache: Map<string, object> = new Map<string, object>();
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
-	public async getConfig(file: RuntimeConfigFile): Promise<any> {
+	public async getConfig(file: RuntimeConfigFile): Promise<object> {
 		// Check cache to see if we've loaded this file in the past or not.
 		if (RuntimeConfigService.cache.has(file)) {
 			console.debug(`Runtime config ${file} found in local cache, skipping server querying...`)
-			return RuntimeConfigService.cache.get(file);
+			return RuntimeConfigService.cache.get(file)!;
 		}
 
 		// Nope, we don't have it.

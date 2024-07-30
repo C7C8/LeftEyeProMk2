@@ -3,13 +3,13 @@ import { HttpClient } from "@angular/common/http";
 import { Category } from "./defs";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class ImageService {
 
 	// private cachedCategories: Category[];
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
 	public getCategories(): Category[] {
 		// TODO: Replace with code for fetching categories from JSON (or from cache if already loaded)

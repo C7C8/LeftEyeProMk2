@@ -11,11 +11,11 @@ import { KonamiDirective } from "./common/directives/konami.directive";
 import { ContactComponent } from "./pages/contact/contact.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
+	selector: 'app-root',
+	standalone: true,
 	imports: [RouterOutlet, MatToolbar, NgOptimizedImage, MatIcon, RouterLink, MatButton, KonamiDirective],
-  templateUrl: './root.component.html',
-  styleUrl: './root.component.scss'
+	templateUrl: './root.component.html',
+	styleUrl: './root.component.scss'
 })
 export class RootComponent implements OnInit {
 
@@ -27,7 +27,7 @@ export class RootComponent implements OnInit {
 		protected dialog: MatDialog) {}
 
 	async ngOnInit(): Promise<void> {
-		this.publicationImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS);
+		this.publicationImages = await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS) as string[];
 	}
 
 	protected openCredits() {

@@ -13,7 +13,7 @@
 	@if (showPoints) {
 		<ul class="carousel-point" NguCarouselPoint>
 			@for (j of carousel.pointNumbers; track j) {
-				<li [class.active]="j==carousel.activePoint" (click)="carousel.moveTo(j)"></li>
+				<li [class.active]="j === carousel.activePoint" (click)="carousel.moveTo(j)"></li>
 			}
 		</ul>
 	}

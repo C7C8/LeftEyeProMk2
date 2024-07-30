@@ -1,9 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
 import {
 	NguCarousel,
 	NguCarouselConfig,
 	NguCarouselDefDirective,
-	NguCarouselItemDirective, NguCarouselNextDirective, NguCarouselPointDirective, NguCarouselPrevDirective,
+	NguCarouselItemDirective,
+	NguCarouselNextDirective,
+	NguCarouselPointDirective,
+	NguCarouselPrevDirective,
 	NguItemComponent
 } from "@ngu/carousel";
 
@@ -31,24 +34,24 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 };
 
 @Component({
-  selector: 'app-carousel',
-  standalone: true,
+	selector: 'app-carousel',
+	standalone: true,
 	imports: [
-    NguCarousel,
-    NguItemComponent,
-    NguCarouselItemDirective,
-    NguCarouselDefDirective,
-    NguCarouselPrevDirective,
-    NguCarouselNextDirective,
-    NguCarouselPointDirective
-],
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss'
+		NguCarousel,
+		NguItemComponent,
+		NguCarouselItemDirective,
+		NguCarouselDefDirective,
+		NguCarouselPrevDirective,
+		NguCarouselNextDirective,
+		NguCarouselPointDirective
+	],
+	templateUrl: './carousel.component.html',
+	styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent implements AfterViewInit {
 	@Input() images: CarouselImage[] = [];
-	@Input() showPoints: boolean = true;
-	@Input() shuffle: boolean = false;
+	@Input() showPoints = true;
+	@Input() shuffle = false;
 	@Input() carouselConfig: NguCarouselConfig = DEFAULT_CAROUSEL_CONFIG;
 
 	constructor(private cdr: ChangeDetectorRef) {

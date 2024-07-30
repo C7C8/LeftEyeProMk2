@@ -9,7 +9,7 @@ import { provideNativeDateAdapter } from "@angular/material/core";
 import { provideMarkdown } from "ngx-markdown";
 
 export const appConfig: ApplicationConfig = {
-  providers: [
+	providers: [
 		provideRouter(routes),
 		provideClientHydration(),
 		provideAnimations(),

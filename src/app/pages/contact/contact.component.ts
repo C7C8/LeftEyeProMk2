@@ -39,12 +39,9 @@ enum ImageAccuracy {
 	EXACTLY = "Exact"
 }
 
-interface ContactFormImageRequest {
-}
-
 @Component({
-  selector: 'app-contact',
-  standalone: true,
+	selector: 'app-contact',
+	standalone: true,
 	imports: [
 		MatDialogTitle,
 		MatAccordion,
@@ -82,8 +79,8 @@ interface ContactFormImageRequest {
 		MatIconButton,
 		MatDialogClose
 	],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+	templateUrl: './contact.component.html',
+	styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
 	protected readonly EMAIL = "steven@lefteyepro.com"

@@ -105,13 +105,10 @@
 							<span>
 								I have
 								<mat-form-field appearance="outline">
-									<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()" />
+									<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()" (keydown)="onChangeRequests()"/>
 								</mat-form-field>
 								image request
-								@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {
-									s
-								}
-								.
+								@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
 							</span>
 
 							<button

@@ -1,21 +1,40 @@
 <div class="carousel-container">
 	<ngu-carousel #carousel [inputs]="carouselConfig" [dataSource]="images">
 		<ngu-item NguCarouselItem *nguCarouselDef="let item">
-			<img [src]="item.image" [alt]="item.alt" />
+			<img [src]="item.image" [alt]="item.alt" [draggable]="false"/>
 			@if (item.caption) {
 				<div class="caption">
 					<em>{{ item.caption }}</em>
 				</div>
 			}
+
+			<button NguCarouselPrev hidden #prev></button>
+			<button NguCarouselNext hidden #next></button>
 		</ngu-item>
 	</ngu-carousel>
 
-	<!-- Carousel points -- indicates which image you're on. -->
-	@if (showPoints) {
-		<ul class="carousel-point" NguCarouselPoint>
-			@for (j of carousel.pointNumbers; track j) {
-				<li [class.active]="j === carousel.activePoint" (click)="carousel.moveTo(j)"></li>
-			}
-		</ul>
-	}
+	<div class="carousel-footer">
+		<!-- Left arrow -->
+		@if (showArrows) {
+			<button mat-icon-button (click)="prev.nativeElement.click()">
+				<mat-icon [inline]="true">keyboard_arrow_left</mat-icon>
+			</button>
+		}
+
+		<!-- Points -->
+		@if (showPoints) {
+			<ul class="carousel-points" NguCarouselPoint>
+				@for (j of carousel.pointNumbers; track j) {
+					<li [class.active]="j === carousel.activePoint" (click)="carousel.moveTo(j)"></li>
+				}
+			</ul>
+		}
+
+		<!-- Right arrow -->
+		@if (showArrows) {
+			<button mat-icon-button (click)="next.nativeElement.click()">
+				<mat-icon [inline]="true">keyboard_arrow_right</mat-icon>
+			</button>
+		}
+	</div>
 </div>

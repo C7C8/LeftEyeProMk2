@@ -1,4 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input } from "@angular/core";
+import {
+	AfterViewInit,
+	booleanAttribute,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	Input,
+	ViewChild
+} from "@angular/core";
 import {
 	NguCarousel,
 	NguCarouselConfig,
@@ -11,6 +19,8 @@ import {
 } from "@ngu/carousel";
 
 import _ from "lodash";
+import { MatIcon } from "@angular/material/icon";
+import { MatButton, MatIconButton } from "@angular/material/button";
 
 export interface CarouselImage {
 	image: string;
@@ -29,7 +39,7 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 		visible: true
 	},
 	load: 2,
-	touch: false,
+	touch: true,
 	easing: "ease"
 };
 
@@ -43,7 +53,9 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 		NguCarouselDefDirective,
 		NguCarouselPrevDirective,
 		NguCarouselNextDirective,
-		NguCarouselPointDirective
+		NguCarouselPointDirective,
+		MatIcon,
+		MatIconButton
 	],
 	templateUrl: "./carousel.component.html",
 	styleUrl: "./carousel.component.scss"
@@ -51,8 +63,12 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 export class CarouselComponent implements AfterViewInit {
 	@Input() images: CarouselImage[] = [];
 	@Input() showPoints = true;
+	@Input() showArrows: boolean = true;
 	@Input() shuffle = false;
 	@Input() carouselConfig: NguCarouselConfig = DEFAULT_CAROUSEL_CONFIG;
+
+	@ViewChild("prev") prev!: ElementRef;
+	@ViewChild("next") next!: ElementRef;
 
 	constructor(private cdr: ChangeDetectorRef) {
 		if (this.shuffle) {
@@ -62,5 +78,7 @@ export class CarouselComponent implements AfterViewInit {
 
 	ngAfterViewInit(): void {
 		this.cdr.detectChanges();
+		console.log("Next", this.next);
+		console.log("Prev", this.prev);
 	}
 }

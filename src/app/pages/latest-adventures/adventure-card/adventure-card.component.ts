@@ -23,7 +23,7 @@ import { NguCarousel, NguCarouselConfig } from "@ngu/carousel";
 /**
  * Adventure card data
  */
-export interface AdventureCardData {
+export interface AdventureData {
 	/**
 	 * Main title for card.
 	 */
@@ -74,7 +74,7 @@ export interface AdventureCardData {
 })
 export class AdventureCardComponent implements OnChanges {
 	@Input({ required: true })
-	public adventure!: AdventureCardData;
+	public adventure!: AdventureData;
 	protected dialogRef?: MatDialogRef<AdventureCardComponent> | null = null;
 
 	// Carousel config.

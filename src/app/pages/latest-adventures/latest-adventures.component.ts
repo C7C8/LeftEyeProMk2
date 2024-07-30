@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { RuntimeConfigFile, RuntimeConfigService } from "../../common/services/runtime-config.service";
-import { AdventureCardComponent, AdventureCardData } from "./adventure-card/adventure-card.component";
+import { RuntimeConfigService } from "../../common/services/runtime-config/runtime-config.service";
+import { AdventureCardComponent, AdventureData } from "./adventure-card/adventure-card.component";
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 
 import { MatPaginator } from "@angular/material/paginator";
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from "@angular/material/card";
 import _ from "lodash";
+import { CFG_ADVENTURES } from "../../common/services/runtime-config/defs";
 
 @Component({
 	selector: "app-latest-adventures",
@@ -25,14 +26,14 @@ import _ from "lodash";
 })
 export class LatestAdventuresComponent implements OnInit {
 	@ViewChild("paginator") paginator!: MatPaginator;
-	protected adventures: AdventureCardData[] = [];
-	protected page: AdventureCardData[] = [];
+	protected adventures: AdventureData[] = [];
+	protected page: AdventureData[] = [];
 
 	constructor(private runtimeConfig: RuntimeConfigService) {}
 
 	public async ngOnInit(): Promise<void> {
 		// Load in saved adventures
-		this.adventures = (await this.runtimeConfig.getConfig(RuntimeConfigFile.ADVENTURES)) as AdventureCardData[];
+		this.adventures = await this.runtimeConfig.getConfig(CFG_ADVENTURES);
 		this.setPage(this.paginator.pageIndex, this.paginator.pageSize);
 	}
 

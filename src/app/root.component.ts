@@ -4,11 +4,12 @@ import { MatToolbar } from "@angular/material/toolbar";
 import { NgOptimizedImage } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
-import { RuntimeConfigFile, RuntimeConfigService } from "./common/services/runtime-config.service";
+import { RuntimeConfigService } from "./common/services/runtime-config/runtime-config.service";
 import { MatDialog } from "@angular/material/dialog";
 import { CreditsPopupComponent } from "./common/components/author-popup/credits-popup.component";
 import { KonamiDirective } from "./common/directives/konami.directive";
 import { ContactComponent } from "./pages/contact/contact.component";
+import { CFG_PUBLICATIONS } from "./common/services/runtime-config/defs";
 
 @Component({
 	selector: "app-root",
@@ -27,7 +28,7 @@ export class RootComponent implements OnInit {
 	) {}
 
 	async ngOnInit(): Promise<void> {
-		this.publicationImages = (await this.runtimeConfig.getConfig(RuntimeConfigFile.PUBLICATIONS)) as string[];
+		this.publicationImages = await this.runtimeConfig.getConfig(CFG_PUBLICATIONS);
 	}
 
 	protected openCredits() {

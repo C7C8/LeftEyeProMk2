@@ -32,6 +32,7 @@ import {
 } from "@angular/material/datepicker";
 import { MatOption, MatSelect } from "@angular/material/select";
 import YAML from "yaml";
+import { NgIf } from "@angular/common";
 
 enum ImageAccuracy {
 	CLOSE = "Close",
@@ -77,7 +78,8 @@ enum ImageAccuracy {
 		MatHint,
 		MatStepperIcon,
 		MatIconButton,
-		MatDialogClose
+		MatDialogClose,
+		NgIf
 	],
 	templateUrl: "./contact.component.html",
 	styleUrl: "./contact.component.scss"

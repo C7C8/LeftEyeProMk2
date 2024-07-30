@@ -1,1 +1,36 @@
-<p>current-project works!</p>
+<div class="medium-content-container">
+	<mat-card>
+		<mat-card-header>
+			<h1>Current Project</h1>
+		</mat-card-header>
+
+		<mat-card-content>
+			<app-carousel [images]="project.carousel_images.map(urlToCarouselImage)" [showArrows]="true"></app-carousel>
+			<markdown [data]="project.content"></markdown>
+
+			<mat-divider />
+
+			<div id="footer">
+				<!-- Sponsors -->
+				<div id="sponsors">
+					<h2>Sponsors</h2>
+					<div id="sponsors-grid">
+						@for (sponsorImg of project.sponsors; track sponsorImg) {
+							<img [src]="sponsorImg" [alt]="sponsorImg" />
+						}
+					</div>
+				</div>
+
+				<!-- Get involved -->
+				<div id="get-involved">
+					@for (involveAd of project.get_involved; track involveAd) {
+						<div class="involve-ad">
+							<h2>{{ involveAd.name }}</h2>
+							<a [href]="involveAd.url">{{ involveAd.url }}</a>
+						</div>
+					}
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>

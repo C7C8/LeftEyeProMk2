@@ -8,6 +8,7 @@
 		"watch": "ng build --watch --configuration development",
 		"serve:ssr:left-eye-pro-mk2": "node dist/left-eye-pro-mk2/server/server.mjs",
 		"lint": "ng lint",
+		"lint:fix": "ng lint --fix",
 		"prettier": "npx prettier --write ."
 	},
 	"private": true,

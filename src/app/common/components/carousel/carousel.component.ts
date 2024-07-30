@@ -1,12 +1,4 @@
-import {
-	AfterViewInit,
-	booleanAttribute,
-	ChangeDetectorRef,
-	Component,
-	ElementRef,
-	Input,
-	ViewChild
-} from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from "@angular/core";
 import {
 	NguCarousel,
 	NguCarouselConfig,
@@ -20,7 +12,7 @@ import {
 
 import _ from "lodash";
 import { MatIcon } from "@angular/material/icon";
-import { MatButton, MatIconButton } from "@angular/material/button";
+import { MatIconButton } from "@angular/material/button";
 
 export interface CarouselImage {
 	image: string;
@@ -63,7 +55,7 @@ export const DEFAULT_CAROUSEL_CONFIG: NguCarouselConfig = {
 export class CarouselComponent implements AfterViewInit {
 	@Input() images: CarouselImage[] = [];
 	@Input() showPoints = true;
-	@Input() showArrows: boolean = true;
+	@Input() showArrows = true;
 	@Input() shuffle = false;
 	@Input() carouselConfig: NguCarouselConfig = DEFAULT_CAROUSEL_CONFIG;
 

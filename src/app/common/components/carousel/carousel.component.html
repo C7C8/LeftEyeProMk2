@@ -1,7 +1,7 @@
 <div class="carousel-container">
 	<ngu-carousel #carousel [inputs]="carouselConfig" [dataSource]="images">
 		<ngu-item NguCarouselItem *nguCarouselDef="let item">
-			<img [src]="item.image" [alt]="item.alt" [draggable]="false"/>
+			<img [src]="item.image" [alt]="item.alt" [draggable]="false" />
 			@if (item.caption) {
 				<div class="caption">
 					<em>{{ item.caption }}</em>

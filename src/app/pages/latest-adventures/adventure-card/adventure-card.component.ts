@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import {
 	MatCard,
 	MatCardContent,
@@ -105,7 +105,7 @@ export class AdventureCardComponent implements OnInit {
 	}
 
 	protected urlToCarouselImage(url: string): CarouselImage {
-		return {image: url, alt: url.split("/").pop() || url };
+		return { image: url, alt: url.split("/").pop() || url };
 	}
 
 	protected expandToDialog() {

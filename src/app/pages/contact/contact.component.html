@@ -105,10 +105,17 @@
 							<span>
 								I have
 								<mat-form-field appearance="outline">
-									<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()" (keydown)="onChangeRequests()"/>
+									<input
+										type="number"
+										matInput
+										formControlName="requestsCount"
+										min="1"
+										(change)="onChangeRequests()"
+										(keydown)="onChangeRequests()" />
 								</mat-form-field>
-								image request
-								@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
+								image request<span *ngIf="customContactForm.controls.submitter.controls.requestsCount.value! > 1"
+									>s</span
+								>.
 							</span>
 
 							<button

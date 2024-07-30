@@ -1,0 +1,47 @@
+mat-card-header h1 {
+	font-size: 2em;
+}
+
+mat-card-content {
+	app-carousel {
+		display: inline-block;
+		float: right;
+		width: 40%;
+		margin-left: 1em;
+		margin-bottom: 1em;
+	}
+
+	#footer {
+		margin-top: 1em;
+		display: flex;
+		flex-direction: row;
+
+		#sponsors {
+			width: 66%;
+
+			#sponsors-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 1em;
+
+				img {
+					width: 50%;
+					place-self: center;
+				}
+			}
+		}
+
+		#get-involved {
+			display: inline-block;
+			width: 33%;
+
+			.involve-ad {
+				margin-bottom: 1em;
+
+				h2 {
+					margin-bottom: -0.5em;
+				}
+			}
+		}
+	}
+}

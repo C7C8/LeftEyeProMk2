@@ -31,6 +31,7 @@ import {
 	MatDateRangePicker
 } from "@angular/material/datepicker";
 import { MatOption, MatSelect } from "@angular/material/select";
+import YAML from "yaml";
 
 enum ImageAccuracy {
 	CLOSE = "Close",
@@ -85,13 +86,15 @@ interface ContactFormImageRequest {
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
+	protected readonly EMAIL = "steven@lefteyepro.com"
 	protected readonly REQUEST_MIN_CHARS = 15;
 	protected readonly REQUEST_MAX_CHARS = 1000;
+
 	protected customContactForm = this.formBuilder.group({
 		submitter: this.formBuilder.group({
 			name: ["", Validators.required],
 			company: [""],
-			phone: ["", [Validators.required, Validators.pattern("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$")]],
+			phone: ["", [Validators.required, Validators.pattern(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)]],
 			email: ["", [Validators.required, Validators.email]],
 			requestsCount: [1, [Validators.min(1), Validators.max(100)]]
 		}),
@@ -134,8 +137,15 @@ export class ContactComponent {
 	}
 
 	protected onSubmit(): void {
-		// TODO open mail client
-		console.log("Submitting contact form", this.customContactForm.value)
+		// TODO Improve formatting of sent email
+		const formValue = this.customContactForm.value;
+		console.debug("Submitting contact form", formValue)
+		const message_body = encodeURIComponent(YAML.stringify(this.customContactForm.value))
+		const subject_line = encodeURIComponent(`Contact form request from ${formValue.submitter?.name} for ${formValue.submitter?.requestsCount} images`);
+		const uri = `mailto:${this.EMAIL}?subject=${subject_line}&body=${message_body}`;
+		console.debug("Contact form URI", uri);
+		window.open(uri);
+
 		this.dialogRef.close();
 	}
 

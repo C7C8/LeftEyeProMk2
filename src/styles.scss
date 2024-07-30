@@ -17,6 +17,13 @@ body {
 	flex-grow: 1;
 }
 
+// Container for the above
+.spaceable {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 // Middle dot used for separators.
 .middot {
 	font-size: 2em;

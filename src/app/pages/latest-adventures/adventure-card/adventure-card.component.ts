@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, inject, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import {
 	MatCard,
 	MatCardContent,
@@ -19,6 +19,7 @@ import {
 	DEFAULT_CAROUSEL_CONFIG
 } from "../../../common/components/carousel/carousel.component";
 import { NguCarousel, NguCarouselConfig } from "@ngu/carousel";
+import _ from "lodash";
 
 /**
  * Adventure card data
@@ -72,14 +73,13 @@ export interface AdventureData {
 	templateUrl: "./adventure-card.component.html",
 	styleUrl: "./adventure-card.component.scss"
 })
-export class AdventureCardComponent implements OnChanges {
+export class AdventureCardComponent implements OnInit {
 	@Input({ required: true })
 	public adventure!: AdventureData;
 	protected dialogRef?: MatDialogRef<AdventureCardComponent> | null = null;
 
 	// Carousel config.
 	// https://www.youtube.com/watch?v=bgs9OhjAE2g
-	protected carouselImages: CarouselImage[] = [];
 	private static readonly INTERVAL_BASE_MS = 10000;
 	private static readonly INTERVAL_JITTER_MS = 2500;
 	protected readonly carouselConfig: NguCarouselConfig = {
@@ -100,16 +100,12 @@ export class AdventureCardComponent implements OnChanges {
 		this.dialogRef = inject(MatDialogRef<AdventureCardComponent>, { optional: true });
 	}
 
-	public ngOnChanges(changes: SimpleChanges) {
-		// No changes to the input adventure object, just break.
-		if (!changes["adventure"]) {
-			return;
-		}
+	public ngOnInit(): void {
+		this.adventure.images = _.shuffle(this.adventure.images);
+	}
 
-		this.carouselImages = this.adventure.images.map((url: string) => ({
-			image: url,
-			alt: url.split("/").pop() || url
-		}));
+	protected urlToCarouselImage(url: string): CarouselImage {
+		return {image: url, alt: url.split("/").pop() || url };
 	}
 
 	protected expandToDialog() {
@@ -118,6 +114,5 @@ export class AdventureCardComponent implements OnChanges {
 			height: "80vh"
 		});
 		ref.componentInstance.adventure = this.adventure;
-		ref.componentInstance.carouselImages = this.carouselImages;
 	}
 }

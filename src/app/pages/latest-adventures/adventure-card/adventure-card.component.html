@@ -37,7 +37,7 @@
 	</mat-card-header>
 
 	@if (adventure.images.length > 0) {
-		<app-carousel [images]="carouselImages" [carouselConfig]="carouselConfig" [showPoints]="true" />
+		<app-carousel [images]="adventure.images.map(urlToCarouselImage)" [carouselConfig]="carouselConfig" [showPoints]="true" />
 	}
 
 	<mat-card-content>

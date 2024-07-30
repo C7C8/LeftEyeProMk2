@@ -1,6 +1,11 @@
-h1 {
-	font-family: "Abril Fatface", sans-serif !important;
-	font-size: 2em !important;
+#title {
+	font-size: 1em;
+	padding: 1em;
+
+	h1 {
+		font-family: "Abril Fatface", sans-serif !important;
+		font-size: 2em !important;
+	}
 }
 
 mat-panel-description {
@@ -67,9 +72,6 @@ mat-panel-description {
 }
 
 .request-footer {
-	display: flex;
-	flex-direction: row;
-
 	mat-form-field {
 		margin-right: 1em;
 	}
@@ -81,4 +83,10 @@ mat-panel-description {
 	.accuracy-selector {
 		width: 15em;
 	}
+}
+
+#submit-button {
+	display: block;
+	margin: 2em auto;
+	font-size: 2em;
 }

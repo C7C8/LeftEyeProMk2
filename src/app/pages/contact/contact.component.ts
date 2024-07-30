@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialogTitle } from "@angular/material/dialog";
+import { MatDialogClose, MatDialogRef, MatDialogTitle } from "@angular/material/dialog";
 import {
 	MatAccordion,
 	MatExpansionPanel,
@@ -12,11 +12,17 @@ import { MatIcon } from "@angular/material/icon";
 import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatDivider } from "@angular/material/divider";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MatStep, MatStepContent, MatStepLabel, MatStepper, MatStepperNext } from "@angular/material/stepper";
+import {
+	MatStep,
+	MatStepContent,
+	MatStepLabel,
+	MatStepper,
+	MatStepperIcon,
+	MatStepperNext
+} from "@angular/material/stepper";
 import { MatError, MatFormField, MatHint, MatLabel, MatPrefix, MatSuffix } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
-import { MatButton } from "@angular/material/button";
-
+import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatTooltip } from "@angular/material/tooltip";
 import {
 	MatDatepicker,
@@ -70,7 +76,10 @@ interface ContactFormImageRequest {
 		MatDatepicker,
 		MatSelect,
 		MatOption,
-		MatHint
+		MatHint,
+		MatStepperIcon,
+		MatIconButton,
+		MatDialogClose
 	],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
@@ -89,7 +98,7 @@ export class ContactComponent {
 		requests: this.formBuilder.array([this.makeImageRequest()], Validators.minLength(1))
 	})
 
-	constructor(private formBuilder: FormBuilder) { }
+	constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<ContactComponent>) { }
 
 	protected makeImageRequest(): FormGroup {
 		return this.formBuilder.group({
@@ -124,8 +133,10 @@ export class ContactComponent {
 		}
 	}
 
-	protected debugLog(): void {
-		console.log("Form value", this.customContactForm.value)
+	protected onSubmit(): void {
+		// TODO open mail client
+		console.log("Submitting contact form", this.customContactForm.value)
+		this.dialogRef.close();
 	}
 
 	protected readonly ImageAccuracy = ImageAccuracy;

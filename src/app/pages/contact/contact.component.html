@@ -1,4 +1,8 @@
-<h1 mat-dialog-title>Get in Touch</h1>
+<div id="title" class="spaceable">
+	<h1>Get in Touch</h1>
+	<span class="spacer"></span>
+	<button mat-icon-button matDialogClose><mat-icon>close</mat-icon></button>
+</div>
 
 <!--    ,.   (   .      )        .      "							-->
 <!--   ("     )  )'     ,'        )  . (`     '`			-->
@@ -102,13 +106,13 @@
 						</div>
 
 						<div id="submitterInfoFooter">
-						<span>
-							I have
-							<mat-form-field appearance="outline">
-								<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()">
-							</mat-form-field>
-							image request@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
-						</span>
+							<span>
+								I have
+								<mat-form-field appearance="outline">
+									<input type="number" matInput formControlName="requestsCount" min="1" (change)="onChangeRequests()">
+								</mat-form-field>
+								image request@if (customContactForm.controls.submitter.controls.requestsCount.value! > 1) {s}.
+							</span>
 
 							<button mat-raised-button
 											matStepperNext
@@ -146,7 +150,7 @@
 										}
 									</mat-form-field>
 
-									<div class="request-footer">
+									<div class="request-footer spaceable">
 										<mat-form-field appearance="outline" class="date-requirement-selector">
 											<mat-label>Image needed by</mat-label>
 											<input matInput
@@ -179,6 +183,16 @@
 								</ng-template>
 							</mat-step>
 					}
+
+					<mat-step>
+						<ng-template matStepLabel>Submit</ng-template>
+						<ng-template matStepContent>
+							When you're ready, click the below button to submit your request! We'll open your mail client so you can
+							send off a message.
+
+							<button mat-raised-button type="submit" color="primary" id="submit-button">Submit</button>
+						</ng-template>
+					</mat-step>
 				</mat-stepper>
 			</form>
 		</ng-template>

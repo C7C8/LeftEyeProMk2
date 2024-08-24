@@ -36,7 +36,7 @@ export interface ImageSidecar {
 	/**
 	 * The year the image was created in.
 	 */
-	date: number;
+	date: string;
 
 	/**
 	 * Filenames for each tile, in row-column order.

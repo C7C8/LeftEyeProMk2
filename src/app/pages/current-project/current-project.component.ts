@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatCard, MatCardContent, MatCardHeader } from "@angular/material/card";
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from "@angular/material/card";
 import { CarouselComponent, CarouselImage } from "../../common/components/carousel/carousel.component";
 import { RuntimeConfigService } from "../../common/services/runtime-config/runtime-config.service";
 import { CFG_CURRENT_PROJECT } from "../../common/services/runtime-config/defs";
@@ -19,7 +19,7 @@ export interface CurrentProjectData {
 @Component({
 	selector: "app-current-project",
 	standalone: true,
-	imports: [MatCard, MatCardHeader, MatCardContent, MarkdownComponent, CarouselComponent, MatDivider],
+	imports: [MatCard, MatCardHeader, MatCardContent, MarkdownComponent, CarouselComponent, MatDivider, MatCardTitle],
 	templateUrl: "./current-project.component.html",
 	styleUrl: "./current-project.component.scss"
 })

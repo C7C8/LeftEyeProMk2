@@ -4,7 +4,7 @@ import { AdventureCardComponent, AdventureData } from "./adventure-card/adventur
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 
 import { MatPaginator } from "@angular/material/paginator";
-import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from "@angular/material/card";
+import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from "@angular/material/card";
 import _ from "lodash";
 import { CFG_ADVENTURES } from "../../common/services/runtime-config/defs";
 
@@ -19,7 +19,8 @@ import { CFG_ADVENTURES } from "../../common/services/runtime-config/defs";
 		MatCard,
 		MatCardContent,
 		MatCardFooter,
-		MatCardHeader
+		MatCardHeader,
+		MatCardTitle
 	],
 	templateUrl: "./latest-adventures.component.html",
 	styleUrl: "./latest-adventures.component.scss"

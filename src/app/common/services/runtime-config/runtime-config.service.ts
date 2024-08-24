@@ -35,7 +35,6 @@ export class RuntimeConfigService {
 
 			// Extract config from the HTTP response as a string, parse it, and put it in the cache.
 			const config = YAML.parse(result);
-			console.debug(`Parsed config file ${file.path}:`, config);
 			RuntimeConfigService.cache.set(file.path, config);
 			return config;
 		} catch (e) {

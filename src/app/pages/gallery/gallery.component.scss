@@ -1,0 +1,23 @@
+h1 {
+	font-size: 2em;
+}
+
+#gallery-wrapper {
+	margin-top: 1em;
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-areas:
+		"sidebar tiles";
+	grid-column-gap: 1em;
+}
+
+#gallery-sidebar {
+	grid-area: sidebar;
+}
+
+#gallery-tiles {
+	grid-area: tiles;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1em;
+}

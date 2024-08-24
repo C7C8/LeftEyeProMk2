@@ -24,13 +24,6 @@ export interface ImageSidecar {
 	thumbnail: string;
 
 	/**
-	 * URL to a high-res but low detail preview of the image in SVG format. This should be blurred to hide that it's
-	 * actually a low-poly SVG in disguise. Ideal for showing in large-format previews of images while the tiled version
-	 * loads in.
-	 */
-	svg?: string;
-
-	/**
 	 * List of tags applicable to the image.
 	 */
 	tags: string[];
@@ -43,17 +36,37 @@ export interface ImageSidecar {
 	/**
 	 * The year the image was created in.
 	 */
-	year?: number;
+	date: number;
 
 	/**
-	 * How many tiles in the X dimension
+	 * Filenames for each tile, in row-column order.
 	 */
-	xTiles?: number;
+	tiles: string[][];
 
 	/**
-	 * How many tiles in the Y dimension
+	 * Pixels int he tie
 	 */
-	yTiles?: number;
+	dimensions: {
+		/**
+		 * X-dimension pixels
+		 */
+		x: number;
+
+		/**
+		 * Y-dimension pixels
+		 */
+		y: number;
+
+		/**
+		 * How many tiles in the X dimension
+		 */
+		columns: number;
+
+		/**
+		 * How many tiles in the Y dimension
+		 */
+		rows: number;
+	}
 }
 
 export interface TagSidecar {
@@ -70,7 +83,7 @@ export interface TagSidecar {
 	/**
 	 * List of images within this tag.
 	 */
-	image_sidecars: string[];
+	images: string[];
 }
 
 export interface CategorySidecar {

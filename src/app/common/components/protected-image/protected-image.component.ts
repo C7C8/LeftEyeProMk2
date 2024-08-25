@@ -7,6 +7,7 @@ import { MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/mater
 import { MatIconButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { MatTooltip } from "@angular/material/tooltip";
+import { MatGridList } from "@angular/material/grid-list";
 
 @Component({
   selector: 'app-protected-image',
@@ -20,7 +21,8 @@ import { MatTooltip } from "@angular/material/tooltip";
 		MatIconButton,
 		MatDialogClose,
 		MatIcon,
-		MatTooltip
+		MatTooltip,
+		MatGridList
 	],
   templateUrl: './protected-image.component.html',
   styleUrl: './protected-image.component.scss'
@@ -28,6 +30,13 @@ import { MatTooltip } from "@angular/material/tooltip";
 export class ProtectedImageComponent {
 	@Input({required: true}) sidecar!: ImageSidecar;
 	@Input({required: true}) imageName!: string;
+	protected gridStyle: string;
+
+	constructor() {
+		this.gridStyle = `
+			grid-te
+		`
+	}
 
 	protected getTilePath(tileName: string): string {
 		return GalleryService.getTilePath(this.imageName, tileName);

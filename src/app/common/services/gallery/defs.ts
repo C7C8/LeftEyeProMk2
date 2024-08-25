@@ -43,6 +43,11 @@ export interface ImageSidecar {
 	 */
 	tiles: string[][];
 
+	/**
+	 * File size in bytes
+	 */
+	filesize: number;
+
 	dimensions: {
 		/**
 		 * X-dimension pixels

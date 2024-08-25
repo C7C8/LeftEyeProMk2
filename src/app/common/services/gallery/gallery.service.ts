@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { firstValueFrom, lastValueFrom } from "rxjs";
 import YAML from "yaml";
 import { ImageSidecar } from "./defs";
-import { ImageLoader, ImageLoaderConfig } from "@angular/common";
 
 @Injectable({
 	providedIn: "root"
@@ -17,6 +16,7 @@ export class GalleryService {
 
 	private imageIndex: string[] | null = null;
 	private tagIndex: Map<string, string> | null = null;
+	private selectedTags: Set<string> = new Set<string>();
 
 	constructor(private http: HttpClient) {}
 
@@ -54,6 +54,22 @@ export class GalleryService {
 		return YAML.parse(await lastValueFrom(
 			this.http.get(`${GalleryService.GALLERY_BASE}/${imageName}/${imageName}.sidecar.yaml`, { responseType: "text" })
 		));
+	}
+
+	public selectTag(tag: string) {
+		this.selectedTags.add(tag);
+	}
+
+	public deselectTag(tag: string) {
+		this.selectedTags.delete(tag);
+	}
+
+	public isTagSelected(tag: string) {
+		return this.selectedTags.has(tag);
+	}
+
+	public getSelectedTags(): Set<string> {
+		return this.selectedTags;
 	}
 
 	public static getTilePath(imageName: string, tileName: string) {

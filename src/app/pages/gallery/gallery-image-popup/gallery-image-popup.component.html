@@ -1,1 +1,52 @@
-<p>gallery-image-popup works!</p>
+<div id="content-container">
+	<div id="header" class="spaceable" >
+		<div id="header-text">
+			<h1>{{imageName}}</h1>
+			<h2 id="subtitle">{{sidecar.date}}</h2>
+		</div>
+
+		<span class="spacer"></span>
+
+
+		<button mat-icon-button matDialogClose matTooltip="Close expanded view" [matTooltipShowDelay]="250">
+			<mat-icon fontIcon="close" />
+		</button>
+	</div>
+
+	<div id="content">
+		<app-protected-image [imageName]="imageName" [sidecar]="sidecar" />
+
+		<mat-card id="sidebar" appearance="outlined">
+			<mat-card-header>
+				<mat-card-title>Information</mat-card-title>
+			</mat-card-header>
+
+			<mat-card-content>
+				<h3>Metadata</h3>
+				<ul>
+					<li><b>Name:</b> {{imageName}}</li>
+					<li><b>Date:</b> {{sidecar.date}}</li>
+					<li><b>Description:</b> {{sidecar.description}}</li>
+					<li matTooltip="Dimensions are for the full-size image; the preview on the left has been reduce.d">
+						<b>Dimensions:</b> {{sidecar.dimensions.width}}x{{sidecar.dimensions.height}}
+					</li>
+					<li><b>File size:</b> {{sidecar.filesize | filesize}}</li>
+				</ul>
+
+				<button id="add-to-quotes-button" mat-raised-button color="primary">
+					<mat-icon fontIcon="add_shopping_cart"/> Add to stock quotes requests
+				</button>
+
+				<h3>Tags</h3>
+				<p><em>Click any tag below to refine your search on the main page.</em></p>
+				<mat-chip-set>
+					@for (tag of sidecar.tags; track tag) {
+						<mat-chip-option [selected]="galleryService.isTagSelected(tag)" (selectionChange)="handleTagSelection($event, tag)">{{tag}}</mat-chip-option>
+					}
+				</mat-chip-set>
+
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+</div>

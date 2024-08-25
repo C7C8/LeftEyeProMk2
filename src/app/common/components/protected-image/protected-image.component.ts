@@ -3,6 +3,10 @@ import { ImageSidecar } from "../../services/gallery/defs";
 import { MatCard, MatCardHeader } from "@angular/material/card";
 import { GalleryService } from "../../services/gallery/gallery.service";
 import { NgOptimizedImage } from "@angular/common";
+import { MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/material/dialog";
+import { MatIconButton } from "@angular/material/button";
+import { MatIcon } from "@angular/material/icon";
+import { MatTooltip } from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-protected-image',
@@ -10,7 +14,13 @@ import { NgOptimizedImage } from "@angular/common";
 	imports: [
 		MatCard,
 		MatCardHeader,
-		NgOptimizedImage
+		NgOptimizedImage,
+		MatDialogTitle,
+		MatDialogContent,
+		MatIconButton,
+		MatDialogClose,
+		MatIcon,
+		MatTooltip
 	],
   templateUrl: './protected-image.component.html',
   styleUrl: './protected-image.component.scss'

@@ -1,7 +1,11 @@
-<div id="grid" [style]="" (contextmenu)="$event.preventDefault()">
-	@for (row of sidecar.tiles; track row) {
-		@for (tile of row; track tile) {
-			<img [src]="getTilePath(tile)" [alt]="tile">
+<div id="wrapper" (contextmenu)="$event.preventDefault()">
+	<div id="grid" [style]="" >
+		@for (row of sidecar.tiles; track row) {
+			@for (tile of row; track tile) {
+				<img [src]="getTilePath(tile)" [alt]="tile">
+			}
 		}
-	}
+	</div>
+	<!-- TODO Unfuck centering -->
+	<div id="overlay"><div><span>&copy;</span></div></div>
 </div>

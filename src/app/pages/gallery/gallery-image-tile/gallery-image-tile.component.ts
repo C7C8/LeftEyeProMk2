@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ImageSidecar } from "../../../common/services/gallery/defs";
 import {
 	MatCard,
@@ -16,7 +16,7 @@ import { GalleryService } from "../../../common/services/gallery/gallery.service
 import { NgOptimizedImage } from "@angular/common";
 
 @Component({
-  selector: 'app-gallery-image',
+  selector: 'app-gallery-image-tile',
   standalone: true,
 	imports: [
 		MatCard,
@@ -31,13 +31,18 @@ import { NgOptimizedImage } from "@angular/common";
 		MatTooltip,
 		NgOptimizedImage
 	],
-  templateUrl: './gallery-image.component.html',
-  styleUrl: './gallery-image.component.scss'
+  templateUrl: './gallery-image-tile.component.html',
+  styleUrl: './gallery-image-tile.component.scss'
 })
-export class GalleryImageComponent {
+export class GalleryImageTileComponent implements OnInit {
 	@Input({required: true}) sidecar!: ImageSidecar;
 	@Input({required: true}) imageName!: string;
 	@Output() addedToCart: EventEmitter<string> = new EventEmitter();
+
+	ngOnInit(): void {
+		console.log("Image tile sidecar", this.sidecar);
+		console.log("Image tile name", this.imageName);
+	}
 
 	protected getTilePath(tileName: string): string {
 		return GalleryService.getTilePath(this.imageName, tileName);

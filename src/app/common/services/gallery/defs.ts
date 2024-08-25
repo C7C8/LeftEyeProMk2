@@ -43,19 +43,16 @@ export interface ImageSidecar {
 	 */
 	tiles: string[][];
 
-	/**
-	 * Pixels int he tie
-	 */
 	dimensions: {
 		/**
 		 * X-dimension pixels
 		 */
-		x: number;
+		width: number;
 
 		/**
 		 * Y-dimension pixels
 		 */
-		y: number;
+		height: number;
 
 		/**
 		 * How many tiles in the X dimension

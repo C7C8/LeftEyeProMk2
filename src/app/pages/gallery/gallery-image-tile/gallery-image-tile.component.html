@@ -1,18 +1,17 @@
-<mat-card appearance="outlined">
-	<mat-card-header class="spaceable">
+<mat-card appearance="outlined" (contextmenu)="$event.preventDefault()">
+
+	<mat-card-header>
 		<div>
 			<mat-card-title>{{imageName}}</mat-card-title>
 			<mat-card-subtitle>{{sidecar.date}}</mat-card-subtitle>
 		</div>
-
-		<span class="spacer"></span>
-
-
-
 	</mat-card-header>
 
 	<!-- TODO: Change width/height here, it'll break... -->
-	<img [ngSrc]="getTilePath(sidecar.thumbnail)" [alt]="sidecar.thumbnail" [width]="384" [height]="256">
+	<div id="img-container"
+			 [style]="'aspect-ratio: ' + sidecar.dimensions.width + ' / ' + sidecar.dimensions.height">
+		<img [ngSrc]="getTilePath(sidecar.thumbnail)" [alt]="sidecar.thumbnail" fill>
+	</div>
 
 	<mat-card-footer>
 		<button
